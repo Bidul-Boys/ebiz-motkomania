@@ -171,3 +171,8 @@ themes/default-bootstrap/modules/*/mails/*
 /vendor/
 /web/bundles/
 
+# PyCharm IDE 
+.env/
+.idea/
+
+
