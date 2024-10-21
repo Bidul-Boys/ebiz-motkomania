@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 from json_service.json_service import *
 
 
-def fetch_categories(json_data: dict) -> None:
+def fetch_categories(json_data: dict, file_path) -> None:
     try:
         response = requests.get(f"{BASE_URL}/pl/c/")
         soup = BeautifulSoup(response.text, "html.parser")
@@ -20,14 +20,14 @@ def fetch_categories(json_data: dict) -> None:
                 print(f"Category {category_name} already fetched")
                 continue
             json_data[category_name] = {"url": category_url, "sub_categories": {}}
-            append_to_json(json_data)
+            append_to_json(json_data, file_path)
 
             sleep(1)
     except Exception as e:
         print(f"Error while fetching categories: {e}")
 
 
-def fetch_subcategories(json_data: dict) -> None:
+def fetch_subcategories(json_data: dict, file_path) -> None:
     for category_name, category_data in json_data.items():
         try:
             response = requests.get(category_data["url"], timeout=5)
@@ -37,13 +37,97 @@ def fetch_subcategories(json_data: dict) -> None:
             for sub_category in list_element.find_all("li"):
                 sub_category_name = sub_category.find("a").get_text(strip=True)
                 sub_category_url = sub_category.find("a")["href"]
-                sub_category_url = f"{category_data["url"]}{sub_category_url}"
+                sub_category_url = f"{BASE_URL}{sub_category_url}"
                 if sub_category_name in json_data[category_name]["sub_categories"]:
                     print(f"Subcategory {category_name}/{sub_category_name} already fetched")
                     continue
                 json_data[category_name]["sub_categories"][sub_category_name] = {"url": sub_category_url}
-                append_to_json(json_data)
+                append_to_json(json_data, file_path)
                 sleep(1)
         except Exception as e:
             print(f"Error while fetching subcategories for {category_data["url"]}: {e}")
+
+
+#TODO get_details function to be fixed and used in fetch_products
+def get_details(product):
+    sub_url = product.find('a', class_='prodimage f-row')['href']
+
+    try:
+        response = requests.get(f"https://motkomania.pl{sub_url}", timeout=5)
+        soup = BeautifulSoup(response.text, "html.parser")
+    except Exception as e:
+        print(f"Error: {e}")
+        return
+
+    description = soup.find('div', class_='product-modules').find('span')
+    if description:
+        description = description.get_text(strip=True)
+    else:
+        description = ""
+
+    producent = soup.find('div', class_='row manufacturer')
+    if producent:
+        producent_link = producent.find('a')['href']
+        producent_img = producent.find('img')['src']
+    else:
+        producent_link = ""
+        producent_img = ""
+
+    product_imgs_gallery = soup.find('div', class_='innersmallgallery')
+    if product_imgs_gallery:
+        product_imgs = product_imgs_gallery.find_all('a')
+    else:
+        product_imgs = []
+
+    table = soup.find('div', class_='innerbox tab-content product-attributes zebra')
+    if table:
+        technical_data = soup.find_all('td', class_='value r--l-box-5 r--l-md-box-10 r--l-xs-box-10')
+    else:
+        technical_data = []
+
+    print(description)
+    print(producent_img)
+    print(producent_link)
+    for img in product_imgs:
+        print(img['href'])
+    for data in technical_data:
+        print(data.get_text(strip=True))
+
+
+def fetch_products(products_json_data: dict ,categories_json_data: dict, url_counter) -> None:
+    for category_name, category_data in categories_json_data.items():
+        for sub_category_name, sub_category_data in category_data["sub_categories"].items():
+            if category_name not in CATEGORIES_TO_FETCH.keys():
+                continue
+            if sub_category_name not in CATEGORIES_TO_FETCH[category_name]:
+                continue
+
+            #print(f"Fetching products for {category_name}/{sub_category_name} - {sub_category_data["url"]}")
+
+            try:
+                response = requests.get(f"{sub_category_data["url"]}/{url_counter}", timeout=5)
+                soup = BeautifulSoup(response.text, "html.parser")
+                main_div = soup.find("div", {"class": "products products_extended viewphot s-row"})
+
+
+                for product in main_div.find_all("div", {"class": "product-inner-wrap"}):
+                    if product is None or product in products_json_data:
+                        print(f"Product {product} already fetched")
+                        continue
+
+                    product_name = product.find("a", {"class": "prodname f-row"})
+                    product_basket = product.find("div", {"class": "product__basket"})
+                    product_price = product_basket.find("div", {"class": "price f-row"})
+
+                    product_img = product.find('img')
+                    source = 'https://motkomania.pl{}'.format(product_img['data-src'])
+
+                    name = product_name.get_text(strip=True)
+                    price = product_price.get_text(strip=True)
+
+                    products_json_data[name]= {"price": price, "img": source, "category": category_name, "sub_category": sub_category_name}
+                    append_to_json(products_json_data, PRODUCTS_FILEPATH)
+            except Exception as e:
+                print(f"Error while fetching products for {category_name}/{sub_category_name}: {e}")
+                continue
 
