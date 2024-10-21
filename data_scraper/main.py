@@ -1,12 +1,11 @@
-from time import sleep
+from scraper_service.scraper_service import *
 
-from scraper_service import *
 
 def main() -> None:
+    json_data = json_init()
+    fetch_categories(json_data)
+    fetch_subcategories(json_data)
 
-    base_url: str = "https://motkomania.pl/pl/c/Wloczki/737"
-    for url_counter in range(1, 100):
-        get_data(base_url, url_counter)
 
 
 
