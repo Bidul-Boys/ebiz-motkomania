@@ -45,10 +45,10 @@ def fetch_subcategories(json_data: dict, file_path) -> None:
                 append_to_json(json_data, file_path)
                 sleep(1)
         except Exception as e:
-            print(f"Error while fetching subcategories for {category_data["url"]}: {e}")
+            print(f"Error while fetching subcategories for {category_data['url']}: {e}")
 
 
-def def fetch_product_details(product, name, products_json_data):
+def fetch_product_details(product, name, products_json_data):
     sub_url = product.find('a', class_='prodimage f-row')['href']
 
     try:
@@ -83,6 +83,36 @@ def def fetch_product_details(product, name, products_json_data):
             products_json_data[name].update({label.get_text(strip=True): data.get_text(strip=True)})
 
 
+def fetch_products_in_category(products_json_data: dict, sub_category_data,
+                               sub_category_name, category_name, no_pages):
+    for i in range(int(no_pages)):
+        try:
+            response = requests.get(f"{sub_category_data['url']}/{i+1}", timeout=5)
+            soup = BeautifulSoup(response.text, "html.parser")
+            main_div = soup.find("div", {"class": "products products_extended viewphot s-row"})
+
+            for product in main_div.find_all("div", {"class": "product-inner-wrap"}):
+                if product is None or product in products_json_data:
+                    print(f"Product {product} already fetched")
+                    continue
+
+                product_name = product.find("a", {"class": "prodname f-row"})
+                product_basket = product.find("div", {"class": "product__basket"})
+                product_price = product_basket.find("div", {"class": "price f-row"})
+
+                product_img = product.find('img')
+                source = 'https://motkomania.pl{}'.format(product_img['data-src'])
+
+                name = product_name.get_text(strip=True)
+                price = product_price.get_text(strip=True)
+
+                products_json_data[name] = {"price": price, "img": source, "category": category_name,
+                                            "sub_category": sub_category_name}
+                append_to_json(products_json_data, PRODUCTS_FILEPATH)
+                fetch_product_details(product, name, products_json_data)
+        except Exception as e:
+            print(f"Error while fetching products for {category_name}/{sub_category_name}: {e}")
+            return
 
 def fetch_products(products_json_data: dict ,categories_json_data: dict, url_counter) -> None:
     for category_name, category_data in categories_json_data.items():
@@ -92,33 +122,18 @@ def fetch_products(products_json_data: dict ,categories_json_data: dict, url_cou
             if sub_category_name not in CATEGORIES_TO_FETCH[category_name]:
                 continue
 
-            #print(f"Fetching products for {category_name}/{sub_category_name} - {sub_category_data["url"]}")
+            # print(f"Fetching products for {category_name}/{sub_category_name} - {sub_category_data["url"]}")
 
             try:
-                response = requests.get(f"{sub_category_data["url"]}/{url_counter}", timeout=5)
+                response = requests.get(f"{sub_category_data['url']}", timeout=5)
                 soup = BeautifulSoup(response.text, "html.parser")
                 main_div = soup.find("div", {"class": "products products_extended viewphot s-row"})
-
-                #TODO - add url_counter incrementation
-                for product in main_div.find_all("div", {"class": "product-inner-wrap"}):
-                    if product is None or product in products_json_data:
-                        print(f"Product {product} already fetched")
-                        continue
-
-                    product_name = product.find("a", {"class": "prodname f-row"})
-                    product_basket = product.find("div", {"class": "product__basket"})
-                    product_price = product_basket.find("div", {"class": "price f-row"})
-
-                    product_img = product.find('img')
-                    source = 'https://motkomania.pl{}'.format(product_img['data-src'])
-
-                    name = product_name.get_text(strip=True)
-                    price = product_price.get_text(strip=True)
-
-                    products_json_data[name]= {"price": price, "img": source, "category": category_name, "sub_category": sub_category_name}
-                    append_to_json(products_json_data, PRODUCTS_FILEPATH)
-                    fetch_product_details(product, name, products_json_data)
+                paginator = soup.find('ul', class_='paginator')
+                no_pages = 0
+                if paginator:
+                    no_pages = paginator.find('li', class_='last').find_previous_sibling('li').get_text(strip=True)
+                fetch_products_in_category(products_json_data, sub_category_data, sub_category_name,
+                                           category_name, no_pages)
             except Exception as e:
                 print(f"Error while fetching products for {category_name}/{sub_category_name}: {e}")
                 continue
-
