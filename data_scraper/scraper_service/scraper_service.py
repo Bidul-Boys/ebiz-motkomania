@@ -48,8 +48,7 @@ def fetch_subcategories(json_data: dict, file_path) -> None:
             print(f"Error while fetching subcategories for {category_data["url"]}: {e}")
 
 
-#TODO get_details function to be fixed and used in fetch_products
-def get_details(product):
+def def fetch_product_details(product, name, products_json_data):
     sub_url = product.find('a', class_='prodimage f-row')['href']
 
     try:
@@ -62,36 +61,27 @@ def get_details(product):
     description = soup.find('div', class_='product-modules').find('span')
     if description:
         description = description.get_text(strip=True)
-    else:
-        description = ""
+        products_json_data[name].update({"description": description})
 
     producent = soup.find('div', class_='row manufacturer')
     if producent:
         producent_link = producent.find('a')['href']
         producent_img = producent.find('img')['src']
-    else:
-        producent_link = ""
-        producent_img = ""
+        products_json_data[name].update({"producent_img": producent_img, "producent_link": producent_link})
 
     product_imgs_gallery = soup.find('div', class_='innersmallgallery')
     if product_imgs_gallery:
         product_imgs = product_imgs_gallery.find_all('a')
-    else:
-        product_imgs = []
+        for i, img in enumerate(product_imgs, start=1):
+            products_json_data[name].update({f"product_img{i}": img['href']})
 
     table = soup.find('div', class_='innerbox tab-content product-attributes zebra')
     if table:
-        technical_data = soup.find_all('td', class_='value r--l-box-5 r--l-md-box-10 r--l-xs-box-10')
-    else:
-        technical_data = []
+        technical_label = table.find_all('td', class_='name r--l-box-5 r--l-md-box-10 r--l-xs-box-10')
+        technical_data = table.find_all('td', class_='value r--l-box-5 r--l-md-box-10 r--l-xs-box-10')
+        for (data, label) in zip(technical_data, technical_label):
+            products_json_data[name].update({label.get_text(strip=True): data.get_text(strip=True)})
 
-    print(description)
-    print(producent_img)
-    print(producent_link)
-    for img in product_imgs:
-        print(img['href'])
-    for data in technical_data:
-        print(data.get_text(strip=True))
 
 
 def fetch_products(products_json_data: dict ,categories_json_data: dict, url_counter) -> None:
@@ -109,7 +99,7 @@ def fetch_products(products_json_data: dict ,categories_json_data: dict, url_cou
                 soup = BeautifulSoup(response.text, "html.parser")
                 main_div = soup.find("div", {"class": "products products_extended viewphot s-row"})
 
-
+                #TODO - add url_counter incrementation
                 for product in main_div.find_all("div", {"class": "product-inner-wrap"}):
                     if product is None or product in products_json_data:
                         print(f"Product {product} already fetched")
@@ -127,6 +117,7 @@ def fetch_products(products_json_data: dict ,categories_json_data: dict, url_cou
 
                     products_json_data[name]= {"price": price, "img": source, "category": category_name, "sub_category": sub_category_name}
                     append_to_json(products_json_data, PRODUCTS_FILEPATH)
+                    fetch_product_details(product, name, products_json_data)
             except Exception as e:
                 print(f"Error while fetching products for {category_name}/{sub_category_name}: {e}")
                 continue
