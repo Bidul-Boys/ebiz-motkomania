@@ -2,8 +2,8 @@ import pathlib
 
 #TODO - change to relative paths with pathlib!! not using strings
 BASE_URL: str = "https://motkomania.pl"
-CATEGORIES_FILEPATH: str = "categories_and_subs.json"
-PRODUCTS_FILEPATH: str = "products.json"
+CATEGORIES_FILEPATH: str = "../data/categories_and_subs.json"
+PRODUCTS_FILEPATH: str = "../data/products.json"
 
 
 CATEGORIES_TO_FETCH: dict = {
