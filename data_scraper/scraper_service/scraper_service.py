@@ -74,6 +74,9 @@ def fetch_product_details(product, product_json_data):
         product_imgs = product_imgs_gallery.find_all('a')
         for i, img in enumerate(product_imgs, start=1):
             product_json_data.update({f"product_img{i}": img['href']})
+    else: #if product has no gallery, add single image
+        single_image = soup.find('a', class_='js__gallery-anchor-image')
+        product_json_data.update({"product_img1": single_image['href']})
 
     table = soup.find('div', class_='innerbox tab-content product-attributes zebra')
     if table:
@@ -96,11 +99,9 @@ def fetch_products_in_category(products_json_data: dict, sub_category_data,
                 try:
                     product_name = product.find("a", {"class": "prodname f-row"})
                     name = product_name.get_text(strip=True)
-                    if name in products_json_data.keys():
-                        # print(f"product {name} already fetched")
+                    if name in products_json_data.keys(): #check if not default details are fetched
+                        fetch_product_details(product, products_json_data[name])
                         continue
-                    # else:
-                        # print(name)
 
                     product_basket = product.find("div", {"class": "product__basket"})
                     product_price = product_basket.find("div", {"class": "price f-row"})
