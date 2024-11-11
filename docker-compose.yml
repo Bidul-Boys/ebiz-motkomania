@@ -1,0 +1,33 @@
+services:
+  mysql:
+    container_name: ebiz-mysql
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: prestashop
+    networks:
+      - prestashop_network
+    volumes:
+      - db:/var/lib/mysql
+  prestashop:
+    container_name: ebiz-prestashop
+    image: prestashop/prestashop:1.7.8
+    restart: unless-stopped
+    depends_on:
+      - mysql
+    ports:
+      - 8080:80
+    environment:
+      DB_SERVER: ebiz-mysql
+      DB_NAME: prestashop
+      DB_USER: root
+      DB_PASSWD: admin
+    networks:
+      - prestashop_network
+    volumes:
+      - ./prestashop:/var/www/html
+networks:
+  prestashop_network:
+volumes:
+  db:
