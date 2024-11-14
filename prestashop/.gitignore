@@ -121,36 +121,36 @@ tests/Resources/img/tmp/.gitkeep
 !tests/Resources/download/.gitkeep
 tests/Resources/download/*
 
-/admin061qbefqj/autoupgrade/*
-!/admin061qbefqj/autoupgrade/index.php
-!/admin061qbefqj/autoupgrade/backup/index.php
+/admin123/autoupgrade/*
+!/admin123/autoupgrade/index.php
+!/admin123/autoupgrade/backup/index.php
 
-/admin061qbefqj/backups/*
-!/admin061qbefqj/backups/.htaccess
+/admin123/backups/*
+!/admin123/backups/.htaccess
 
-/admin061qbefqj/import/*
-!/admin061qbefqj/import/.htaccess
-!/admin061qbefqj/import/index.php
+/admin123/import/*
+!/admin123/import/.htaccess
+!/admin123/import/index.php
 
-/admin061qbefqj/export/*
-!/admin061qbefqj/export/.htaccess
-!/admin061qbefqj/export/index.php
+/admin123/export/*
+!/admin123/export/.htaccess
+!/admin123/export/index.php
 
 # Downloaded RTL files
-/admin061qbefqj/themes/default/css/bundle/default_rtl.css
-/admin061qbefqj/themes/default/css/bundle/shared_rtl.css
-/admin061qbefqj/themes/default/css/font_rtl.css
-/admin061qbefqj/themes/default/css/overrides_rtl.css
-/admin061qbefqj/themes/default/css/vendor/font-awesome/font-awesome_rtl.css
-/admin061qbefqj/themes/default/css/vendor/nv.d3_rtl.css
-/admin061qbefqj/themes/default/css/vendor/titatoggle-min_rtl.css
-/admin061qbefqj/themes/default/public/theme_rtl.css
-/admin061qbefqj/themes/default/public/*
-/admin061qbefqj/themes/new-theme/css/module/drop_rtl.css
-/admin061qbefqj/themes/new-theme/css/right-sidebar_rtl.css
-/admin061qbefqj/themes/new-theme/public/*
-!/admin061qbefqj/themes/new-theme/public/theme.rtlfix
-!/admin061qbefqj/themes/default/public/theme.rtlfix
+/admin123/themes/default/css/bundle/default_rtl.css
+/admin123/themes/default/css/bundle/shared_rtl.css
+/admin123/themes/default/css/font_rtl.css
+/admin123/themes/default/css/overrides_rtl.css
+/admin123/themes/default/css/vendor/font-awesome/font-awesome_rtl.css
+/admin123/themes/default/css/vendor/nv.d3_rtl.css
+/admin123/themes/default/css/vendor/titatoggle-min_rtl.css
+/admin123/themes/default/public/theme_rtl.css
+/admin123/themes/default/public/*
+/admin123/themes/new-theme/css/module/drop_rtl.css
+/admin123/themes/new-theme/css/right-sidebar_rtl.css
+/admin123/themes/new-theme/public/*
+!/admin123/themes/new-theme/public/theme.rtlfix
+!/admin123/themes/default/public/theme.rtlfix
 
 themes/*/cache/*
 themes/core.js.map

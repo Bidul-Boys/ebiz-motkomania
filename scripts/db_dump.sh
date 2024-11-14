@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Wczytanie zmiennych z pliku .env (jeśli istnieje)
-if [ -f .env ]; then
-  source .env
+if [ -f ../.env ]; then
+  source ../.env
 fi
 
 # Ustawienia bazy danych
@@ -10,7 +10,7 @@ DB_CONTAINER=ebiz-mysql
 DB_USER=${DB_USER}
 DB_PASSWD=${DB_PASSWD}
 DB_NAME=prestashop
-DUMP_FILE=prestashop_dump.sql
+DUMP_FILE=../dumps/prestashop_dump.sql
 
 # Sprawdzenie, czy zmienne środowiskowe DB_USER i DB_PASSWD są ustawione
 if [ -z "$DB_USER" ] || [ -z "$DB_PASSWD" ]; then
