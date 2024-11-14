@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Wczytanie zmiennych z pliku .env (jeśli istnieje)
-if [ -f .env ]; then
-  source .env
+if [ -f ../.env ]; then
+  source ../.env
 fi
 
 # Ustawienia bazy danych
