@@ -28,7 +28,7 @@ services:
     networks:
       - prestashop_network
     volumes:
-      - ./prestashop:/var/www/html
+      - ./../../prestashop:/var/www/html
 networks:
   prestashop_network:
 volumes:
