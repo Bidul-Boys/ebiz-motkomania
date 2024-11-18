@@ -1,3 +1,4 @@
+name: ebiz-motkomania
 services:
   mysql:
     container_name: ebiz-mysql
@@ -24,7 +25,7 @@ services:
       DB_USER: ${DB_USER}
       DB_PASSWD: ${DB_PASSWD}
       PS_INSTALL_AUTO: 1
-      PS_DOMAIN: localhost:8080
+      PS_DOMAIN: localhost
     networks:
       - prestashop_network
     volumes:
