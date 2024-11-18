@@ -1,1 +1,0 @@
-declare module 'vue/dist/vue.min';

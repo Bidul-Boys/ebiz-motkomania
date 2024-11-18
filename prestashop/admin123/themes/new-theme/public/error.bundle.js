@@ -1,1 +1,0 @@
-(()=>{"use strict";document.querySelector(".js-go-back-btn").addEventListener("click",(function(){return window.history.back()})),window.error={}})();
