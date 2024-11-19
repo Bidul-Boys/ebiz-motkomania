@@ -16,7 +16,7 @@ fetched_categories: dict = {
     }
 
 
-def add_fetched_categories():
+def add_categories():
     category_template = prestashop.get('categories/3', options={'schema': 'blank'})
     del category_template['category']['id']
     del category_template['category']['level_depth']

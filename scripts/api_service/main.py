@@ -1,9 +1,11 @@
-from categories_service.categories_service import *
+#from categories_service.categories_service import *
+from products_service.products_service import *
 
 
 def main() -> None:
-    add_fetched_categories()
-    add_sub_categories()
+    # add_categories()
+    # add_sub_categories()
+    add_products()
 
 
 if __name__ == "__main__":
