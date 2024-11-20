@@ -251,11 +251,9 @@ def add_products():
             
         except Exception as e:
             print(f"Error while adding product {product_name} - {e}")
-            #continue
-            return
+            continue
         added_product_id = response['prestashop']['product']['id']
         print(f"Product {product_name} added - ID {added_product_id}")
-        return
 
     
     
