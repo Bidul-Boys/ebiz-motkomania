@@ -25,6 +25,9 @@ services:
       DB_PASSWD: ${DB_PASSWD}
       PS_INSTALL_AUTO: 1
       PS_DOMAIN: localhost:8080
+      PS_FOLDER_ADMIN: ${PS_FOLDER_ADMIN}
+      PS_COUNTRY: PL
+      PS_LANGUAGE: pl
     networks:
       - prestashop_network
     volumes:
