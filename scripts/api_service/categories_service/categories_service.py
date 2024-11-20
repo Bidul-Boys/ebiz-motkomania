@@ -16,36 +16,116 @@ fetched_categories: dict = {
     }
 
 
-def add_categories():
-    category_template = prestashop.get('categories/3', options={'schema': 'blank'})
-    del category_template['category']['id']
-    del category_template['category']['level_depth']
-    del category_template['category']['nb_products_recursive']
-    for k in fetched_categories:
-        category_template['category']['name']['language'].update({
-            'value': k
-        })
-        prestashop.add('categories', category_template)
+categories_ids = {
+    "Włóczki wg rodzaju włókna" : None, 
+    "wełna" : None,
+    "bawełna": None, 
+    "Kołowrotki i akcesoria": None,
+    "Kołowrotki": None,
+    "Części i akcesoria": None,
+    "Krosna i akcesoria": None,
+    "Krosna" : None,
+    "Akcesoria i i części" : None,
+    "Druty i akcesoria": None,
+    "Addi" : None,
+    "Clover" : None
+}
 
 
-def add_sub_categories():
+def delete_existing_categories():
     all_categories = prestashop.get('categories')
-    sub_category_template = prestashop.get('categories/4', options={'schema': 'blank'})
-    del sub_category_template['category']['id']
-    del sub_category_template['category']['level_depth']
-    del sub_category_template['category']['nb_products_recursive']
 
-    for cat in all_categories['categories']['category']:
-        i = cat['attrs']['id']
-        category = prestashop.get('categories', i)
-        category_name = category['category']['name']['language']['value']
-        if category_name in fetched_categories.keys():
-            sub_category_template['category']['id_parent'] = i
-            for fetched_sub_category in fetched_categories[category_name]:
-                sub_category_template['category']['name']['language'].update({
-                    'value': fetched_sub_category
-                })
-                prestashop.add('categories', sub_category_template)
+    counter = 0
+    for category in all_categories['categories']['category']:
+        if int(category['attrs']['id']) != 1 and int(category['attrs']['id']) != 2:
+            try:
+                prestashop.delete('categories', resource_ids=category['attrs']['id'])
+                counter += 1
+            except Exception as e:
+                continue
+    print(f"Deleted {counter} categories")
+    
+    
+    
 
+def add_categories():
+    delete_existing_categories()
+    input("press anything to continue...")
+    
+    
+    category_template = {
+        "category": {
+            "name": {
+                "language": {
+                    "attrs": {"id": "1"},
+                    "value": "Category demo"
+                }
+            },
+            "link_rewrite": {
+                "language": {
+                    "attrs": {"id": "1"},
+                    "value": "category-demo"
+                }
+            },
+            "description": {
+                "language": {
+                    "attrs": {"id": "1"},
+                    "value": "Nadrzędna kategoria"
+                }
+            },
+            "active": 1,
+            "id_parent": 2
+        }
+    }
+    
+    
+    category_counter = 0
+    sub_category_counter = 0
+    for category in fetched_categories:
+        category_template['category']['name']['language']['value'] = category
+        category_template['category']['link_rewrite']['language']['value'] = category.lower().replace(" ", "-")
+        response = prestashop.add('categories', category_template)
+        id = int(response['prestashop']['category']['id'])
+        categories_ids[category] = id
+        
+        for sub_category in fetched_categories[category]:
+            add_sub_category(sub_category, id)
+            sub_category_counter += 1
+        category_counter +=1 
+        
+    print(f"Added {category_counter} categories")
+    print(f"Added {sub_category_counter} sub-categories")
+
+
+def add_sub_category(sub_category, parent_id):
+    sub_category_template = {
+        "category": {
+            "name": {
+                "language": {
+                    "attrs": {"id": "1"},
+                    "value": "Category demo"
+                }
+            },
+            "link_rewrite": {
+                "language": {
+                    "attrs": {"id": "1"},
+                    "value": "category-demo"
+                }
+            },
+            "description": {
+                "language": {
+                    "attrs": {"id": "1"},
+                    "value": "Podrzędna kategoria"
+                }
+            },
+            "active": 1,
+            "id_parent": parent_id
+        }
+    }
+    sub_category_template['category']['name']['language']['value'] = sub_category
+    sub_category_template['category']['link_rewrite']['language']['value'] = sub_category.lower().replace(" ", "-")
+    response = prestashop.add('categories', sub_category_template)
+    id = int(response['prestashop']['category']['id'])
+    categories_ids[sub_category] = id
     
     

@@ -2,56 +2,51 @@ import json
 from dotenv import load_dotenv, dotenv_values 
 import os
 from prestapyt import PrestaShopWebServiceDict
+from categories_service.categories_service import categories_ids
+
 
 load_dotenv() 
 api_url = 'http://localhost:8080/api'
 api_key = os.getenv('WEBSERVICE_KEY')
 
-
 prestashop = PrestaShopWebServiceDict(api_url, api_key)
 
 
-# Hardcoded - check with prestashop
-categories_ids = {
-    "Włóczki wg rodzaju włókna" : 10, 
-    "wełna" : 14,
-    "bawełna": 15, 
-    "Kołowrotki i akcesoria": 11,
-    "Kołowrotki": 16,
-    "Części i akcesoria": 17,
-    "Krosna i akcesoria": 12,
-    "Krosna" : 18,
-    "Akcesoria i i części" : 19,
-    "Druty i akcesoria": 13,
-    "Addi" : 20,
-    "Clover" : 21
-}
 
 def delete_existing_products():
     all_products = prestashop.get('products')
-    if len(all_products['products']) == 0:
-        print("All already products deleted")
+    
+    if all_products['products'] == '':
+        print("No products in shop - deleting not needed")
         return
     
-    
-    for product in all_products['products']['product']:
-        product_id = product['attrs'].get('id')
-        try:
+    # xd - api w zaleznosci od ilosci produktow daje kompletnie inna strukture odpowiedzi dlatego taki zapis smiechulcowy
+    try:
+        no_of_products = len(all_products["products"]['product']['attrs'])
+        if no_of_products == 1:
+            product_id = all_products['products']['product']['attrs'].get('id')
             prestashop.delete('products', resource_ids=product_id)
-        except Exception as e:
-            continue
-    all_products = prestashop.get('products')
-    all_products = prestashop.get('products')
-    
-    if len(all_products['products']) == 0:
-        print("All products deleted succsessfully")
-    else:
-        print("Some products were not deleted")
-
+            print("One existing product deleted")
+            return
+    except Exception as e:
+        counter = 0
+        for product in all_products['products']['product']:
+            product_id = product['attrs'].get('id')
+            try:
+                prestashop.delete('products', resource_ids=product_id)
+                counter +=1
+            except Exception as e:
+                continue
+        print(f"Deleted {counter} products")
 
 
 
 def add_products():
+    if None in categories_ids.values():
+        print("Categories were incorectly added - please add them first")
+        return
+    
+    
     delete_existing_products()
     input("press anything to continue...")
     json_products_filepath = "data/products.json"
@@ -252,12 +247,15 @@ def add_products():
         product_template['product']['price'] = product_info.get('price')
         product_template['product']['description']['language']['value'] = product_info.get('description')
         try:
-            prestashop.add('products', product_template)
+            response = prestashop.add('products', product_template)
+            
         except Exception as e:
             print(f"Error while adding product {product_name} - {e}")
-            continue
-        print(f"Product {product_name} added")
-    
+            #continue
+            return
+        added_product_id = response['prestashop']['product']['id']
+        print(f"Product {product_name} added - ID {added_product_id}")
+        return
 
     
     

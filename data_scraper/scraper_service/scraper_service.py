@@ -89,6 +89,7 @@ def fetch_product_details(product, product_json_data):
 def fetch_products_in_category(products_json_data: dict, sub_category_data,
                                sub_category_name, category_name, no_pages):
     print(sub_category_name)
+    prod_counter = 0 
     for i in range(int(no_pages)):
         try:
             response = requests.get(f"{sub_category_data['url']}/{i+1}", timeout=15)
@@ -114,6 +115,11 @@ def fetch_products_in_category(products_json_data: dict, sub_category_data,
                                          "sub_category": sub_category_name}
                     fetch_product_details(product, product_json_data)
                     products_json_data[name] = product_json_data
+                    prod_counter += 1
+                    if prod_counter == 125:
+                        return
+                        
+                    
                 except Exception as e:
                     print(f"Error while fetching product {category_name}/{sub_category_name}/{i}: {e}")
                     continue
@@ -131,7 +137,7 @@ def fetch_all_products(products_json_data: dict, categories_json_data: dict) -> 
             if sub_category_name not in CATEGORIES_TO_FETCH[category_name]:
                 continue
 
-            # print(f"Fetching products for {category_name}/{sub_category_name} - {sub_category_data["url"]}")
+            print(f"Fetching products for {category_name}/{sub_category_name}")
 
             try:
                 response = requests.get(f"{sub_category_data['url']}", timeout=5)
