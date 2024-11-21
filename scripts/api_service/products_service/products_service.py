@@ -257,6 +257,7 @@ def add_products():
             
         try:
             response = prestashop.add('products', product_template)
+            product_template['product']['associations']['product_features']['product_feature'].clear()
             
         except Exception as e:
             print(f"Error while adding product {product_name} - {e}")
@@ -269,14 +270,10 @@ def add_products():
         img_urls = [f"{img_prefix}{product_info.get(feature)}" for feature in product_info.keys() if feature.startswith('product_img')]
         img_urls.append(base_img_url)
         
-        counter_img = 0
-        for url in img_urls:
-            
-            image_url = f"data/images/{added_product_id}_{counter_img}.jpg"
-            download_image(url, image_url)
-            counter_img += 1
-            
-            
+        no_of_images = len(img_urls)
+        
+        for i in range(no_of_images):
+            image_url = f"data/images/{product_name}_{i}.jpg"
             endpoint = f"{api_url}/images/products/{added_product_id}"
             try:
                 with open(image_url, "rb") as image_file:
@@ -297,18 +294,3 @@ def add_products():
                 print(f"Error while uploading image: {e}")
                 continue
         print(f"Product {product_name} added - ID {added_product_id}")
-        sleep(5)
-
-    
-def download_image(url, save_path):
-    try:
-        response = requests.get(url) 
-        response.raise_for_status()
-
-        with open(save_path, 'wb') as file:
-            for chunk in response.iter_content(chunk_size=8192):
-                file.write(chunk)
-
-        print(f"Image downloaded successfully: {save_path}")
-    except requests.exceptions.RequestException as e:
-        print(f"Error downloading image: {e}")

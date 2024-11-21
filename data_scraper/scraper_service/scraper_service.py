@@ -116,8 +116,8 @@ def fetch_products_in_category(products_json_data: dict, sub_category_data,
                     fetch_product_details(product, product_json_data)
                     products_json_data[name] = product_json_data
                     prod_counter += 1
-                    if prod_counter == 125:
-                        return
+                    # if prod_counter == 125:
+                    #     return
                         
                     
                 except Exception as e:
