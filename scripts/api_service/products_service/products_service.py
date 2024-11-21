@@ -1,9 +1,11 @@
 import json
+from time import sleep
 from dotenv import load_dotenv, dotenv_values 
 import os
 from prestapyt import PrestaShopWebServiceDict
 from categories_service.categories_service import categories_ids
-
+from details_service.details_service import *
+import requests
 
 load_dotenv() 
 api_url = 'http://localhost:8080/api'
@@ -29,26 +31,26 @@ def delete_existing_products():
             print("One existing product deleted")
             return
     except Exception as e:
-        counter = 0
         for product in all_products['products']['product']:
             product_id = product['attrs'].get('id')
             try:
                 prestashop.delete('products', resource_ids=product_id)
-                counter +=1
             except Exception as e:
                 continue
-        print(f"Deleted {counter} products")
+        print(f"Deleted all products")
 
 
 
 def add_products():
+    excluded_features = ['price', 'img', 'category', 'sub_category', 'description', 'producent_img', 'producent_link']
+    
     if None in categories_ids.values():
         print("Categories were incorectly added - please add them first")
         return
     
     
     delete_existing_products()
-    input("press anything to continue...")
+    #input("press anything to continue...")
     json_products_filepath = "data/products.json"
     
     
@@ -117,7 +119,7 @@ def add_products():
         "customizable": "0",
         "text_fields": "0",
         "uploadable_files": "0",
-        "active": "0",
+        "active": "1",
         "redirect_type": "404",
         "id_type_redirected": "0",
         "available_for_order": "1",
@@ -149,28 +151,16 @@ def add_products():
                 "value": ""
             }
         },
-        "link_rewrite": {
-            "language": {
-                "attrs": {"id": "1"},
-                "value": "123"
-            }
-        },
         "name": {
             "language": {
                 "attrs": {"id": "1"},
-                "value": "123"
+                "value": "SAMPLE PRODUCT"
             }
         },
         "description": {
             "language": {
                 "attrs": {"id": "1"},
-                "value": "<p>123</p>"
-            }
-        },
-        "description_short": {
-            "language": {
-                "attrs": {"id": "1"},
-                "value": "<p>123</p>"
+                "value": "<p>SAMPLE DESC</p>"
             }
         },
         "available_now": {
@@ -204,7 +194,9 @@ def add_products():
             },
             "product_features": {
                 "attrs": {"nodeType": "product_feature", "api": "product_features"},
-                "value": ""
+                "product_feature": [
+
+                ]
             },
             "tags": {
                 "attrs": {"nodeType": "tag", "api": "tags"},
@@ -232,20 +224,37 @@ def add_products():
         }
     }
     }
-    one_prod = prestashop.get('products', options={'schema': 'blank'})
     with open(json_products_filepath, 'r') as file:
         products = json.load(file)
     
-        
     for product_name in products:
         product_info = products.get(product_name)
     
         sub_category_id = categories_ids.get(product_info.get('sub_category'))
+        category_id = categories_ids.get(product_info.get('category'))
         
-        product_template['product']['id_category_default'] = sub_category_id
+        product_template['product']['id_category_default'] = category_id
+        product_template['product']['associations']['categories']['category']['id'] = sub_category_id
         product_template['product']['name']['language']['value'] = product_name
         product_template['product']['price'] = product_info.get('price')
         product_template['product']['description']['language']['value'] = product_info.get('description')
+        
+        features = [feature for feature in product_info.keys() if feature not in excluded_features and not feature.startswith('product_img')]
+        for feature in features:
+            feature_id = features_and_values_ids[feature]
+            feature_value = product_info.get(feature)
+            
+            feature_value_id = features_and_values_ids.get(feature_value)
+                   
+            product_feature_template = {
+            "id": str(feature_id),
+            "id_feature_value": str(feature_value_id)
+            }
+            
+            product_template['product']['associations']['product_features']['product_feature'].append(product_feature_template)
+            
+            
+            
         try:
             response = prestashop.add('products', product_template)
             
@@ -253,7 +262,53 @@ def add_products():
             print(f"Error while adding product {product_name} - {e}")
             continue
         added_product_id = response['prestashop']['product']['id']
+        
+        
+        base_img_url = product_info.get('img')
+        img_prefix = 'https://motkomania.pl'
+        img_urls = [f"{img_prefix}{product_info.get(feature)}" for feature in product_info.keys() if feature.startswith('product_img')]
+        img_urls.append(base_img_url)
+        
+        counter_img = 0
+        for url in img_urls:
+            
+            image_url = f"data/images/{added_product_id}_{counter_img}.jpg"
+            download_image(url, image_url)
+            counter_img += 1
+            
+            
+            endpoint = f"{api_url}/images/products/{added_product_id}"
+            try:
+                with open(image_url, "rb") as image_file:
+                    files = {
+                        "image": image_file
+                    }
+                    response = requests.post(
+                        endpoint,
+                        files=files, 
+                        auth=(api_key, ''),
+                    )
+
+                if response.status_code == 200 or response.status_code == 201:
+                    print("Image uploaded successfully!")
+                else:
+                    print(f"Failed to upload image: {response.status_code}")
+            except Exception as e:
+                print(f"Error while uploading image: {e}")
+                continue
         print(f"Product {product_name} added - ID {added_product_id}")
+        sleep(5)
 
     
-    
+def download_image(url, save_path):
+    try:
+        response = requests.get(url) 
+        response.raise_for_status()
+
+        with open(save_path, 'wb') as file:
+            for chunk in response.iter_content(chunk_size=8192):
+                file.write(chunk)
+
+        print(f"Image downloaded successfully: {save_path}")
+    except requests.exceptions.RequestException as e:
+        print(f"Error downloading image: {e}")

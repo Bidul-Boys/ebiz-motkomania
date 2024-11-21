@@ -65,7 +65,7 @@ def get_included_features():
 
 def add_features():
     delete_existing_features_and_attributes()
-    input("press anything to continue...")
+    #input("press anything to continue...")
     included_features = get_included_features()
     
     for feature in included_features:

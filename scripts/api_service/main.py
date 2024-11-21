@@ -1,11 +1,11 @@
 from categories_service.categories_service import *
 from products_service.products_service import *
 from details_service.details_service import *
-
+from details_service.details_service import add_features
 def main() -> None:
     add_features()
-    #add_categories()
-    #add_products()
+    add_categories()
+    add_products()
 
     
 

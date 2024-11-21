@@ -50,7 +50,7 @@ def delete_existing_categories():
 
 def add_categories():
     delete_existing_categories()
-    input("press anything to continue...")
+    #input("press anything to continue...")
     
     
     category_template = {
