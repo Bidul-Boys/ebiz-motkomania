@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from scraper_service.scraper_service import *
 
 
