@@ -43,5 +43,6 @@ def download_all_images():
             else:
                 download_image(url, image_url)
 
-download_all_images()
+for _ in range(40):
+    download_all_images()
         

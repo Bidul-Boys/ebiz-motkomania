@@ -8,7 +8,8 @@ def main() -> None:
     #fetch_subcategories(json_categories_data, CATEGORIES_FILEPATH)
 
     json_products_data = json_init(PRODUCTS_FILEPATH)
-    fetch_all_products(json_products_data, json_categories_data)
+    for _ in range(100):
+        fetch_all_products(json_products_data, json_categories_data)
 
 
 

@@ -1,4 +1,5 @@
 import json
+import random
 from time import sleep
 from dotenv import load_dotenv, dotenv_values 
 import os
@@ -6,6 +7,7 @@ from prestapyt import PrestaShopWebServiceDict
 from categories_service.categories_service import categories_ids
 from details_service.details_service import *
 import requests
+import xml.etree.ElementTree as ET
 
 load_dotenv() 
 api_url = 'http://localhost:8080/api'
@@ -228,6 +230,9 @@ def add_products():
         products = json.load(file)
     
     for product_name in products:
+        
+        #deafult values for product
+        
         product_info = products.get(product_name)
     
         sub_category_id = categories_ids.get(product_info.get('sub_category'))
@@ -263,7 +268,53 @@ def add_products():
             print(f"Error while adding product {product_name} - {e}")
             continue
         added_product_id = response['prestashop']['product']['id']
+        print(f"Product added - ID: {added_product_id}")
         
+        
+        
+        response_status = 404
+
+        while response_status != 200:
+            response = requests.get(
+                f"{api_url}/stock_availables?filter[id_product]={added_product_id}&display=full",
+                auth=(api_key, ''),
+            )
+            response_status = response.status_code
+        
+        response_xml = ET.fromstring(response.text)
+        stock_id = int(response_xml.find('.//id').text)
+        
+        stock_amount = random.randint(0, 10)
+        
+        stock_xml = f"""<prestashop xmlns:xlink="http://www.w3.org/1999/xlink">
+                <stock_available>
+                    <id><![CDATA[{stock_id}]]></id>
+                    <id_product><![CDATA[{added_product_id}]]></id_product>
+                    <id_product_attribute><![CDATA[{0}]]></id_product_attribute>
+                    <id_shop><![CDATA[1]]></id_shop>
+                    <id_shop_group><![CDATA[0]]></id_shop_group>
+                    <quantity><![CDATA[{stock_amount}]]></quantity>
+                    <depends_on_stock><![CDATA[0]]></depends_on_stock>
+                    <out_of_stock><![CDATA[2]]></out_of_stock>
+                    <location><![CDATA[]]></location>
+                </stock_available>
+                </prestashop>
+            """
+
+        response_status = 404
+
+        while response_status != 200:
+            response = requests.put(
+                f"{api_url}/stock_availables/{stock_id}",
+                data=stock_xml,
+                auth=(api_key, ''),
+            )
+            response_status = response.status_code
+        
+        print(f"Stock for product added - Prod ID: {added_product_id} | Stock ID: {stock_id} | Amount: {stock_amount}")
+        
+        
+        # imgs
         
         base_img_url = product_info.get('img')
         img_prefix = 'https://motkomania.pl'
@@ -280,12 +331,15 @@ def add_products():
                     files = {
                         "image": image_file
                     }
+                    #response_code = 404
+                    
                     response = requests.post(
                         endpoint,
                         files=files, 
-                        auth=(api_key, ''),
+                        auth=(api_key, '')
                     )
-
+                    #response_code = response.status_code
+                    
                 if response.status_code == 200 or response.status_code == 201:
                     print("Image uploaded successfully!")
                 else:
@@ -293,4 +347,5 @@ def add_products():
             except Exception as e:
                 print(f"Error while uploading image: {e}")
                 continue
-        print(f"Product {product_name} added - ID {added_product_id}")
+        print(f"Product {product_name} finished adding - ID {added_product_id}")
+
