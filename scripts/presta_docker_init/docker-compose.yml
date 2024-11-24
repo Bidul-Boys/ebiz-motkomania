@@ -18,13 +18,14 @@ services:
       - mysql
     ports:
       - 8080:80
+      - 8443:443
     environment:
       DB_SERVER: ebiz-mysql
       DB_NAME: prestashop
       DB_USER: ${DB_USER}
       DB_PASSWD: ${DB_PASSWD}
       PS_INSTALL_AUTO: 1
-      PS_DOMAIN: localhost:8080
+      PS_DOMAIN: localhost:8080 # HAS TO BE ':8080'
       PS_FOLDER_ADMIN: ${PS_FOLDER_ADMIN}
       PS_COUNTRY: PL
       PS_LANGUAGE: pl
@@ -32,6 +33,7 @@ services:
       - prestashop_network
     volumes:
       - ./../../prestashop:/var/www/html
+      - ./../../config/sites-available:/etc/apache2/sites-available
 networks:
   prestashop_network:
 volumes:
