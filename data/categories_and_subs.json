@@ -1,0 +1,270 @@
+{
+    "Włóczki": {
+        "url": "https://motkomania.pl/pl/c/Wloczki/737",
+        "sub_categories": {
+            "De Rerum Natura": {
+                "url": "https://motkomania.pl/pl/c/De-Rerum-Natura/751"
+            },
+            "Drops": {
+                "url": "https://motkomania.pl/pl/c/Drops/37"
+            },
+            "Dyeing House Gallery": {
+                "url": "https://motkomania.pl/pl/c/Dyeing-House-Gallery/714"
+            },
+            "Filcolana": {
+                "url": "https://motkomania.pl/pl/c/Filcolana/777"
+            },
+            "Fonty": {
+                "url": "https://motkomania.pl/pl/c/Fonty/807"
+            },
+            "Hedgehog Fibers": {
+                "url": "https://motkomania.pl/pl/c/Hedgehog-Fibers/747"
+            },
+            "HipKnit": {
+                "url": "https://motkomania.pl/pl/c/HipKnit/759"
+            },
+            "Holst Garn": {
+                "url": "https://motkomania.pl/pl/c/Holst-Garn/761"
+            },
+            "ITO": {
+                "url": "https://motkomania.pl/pl/c/ITO/716"
+            },
+            "Knitting for Olive": {
+                "url": "https://motkomania.pl/pl/c/Knitting-for-Olive/780"
+            },
+            "Kremke Soul Wool": {
+                "url": "https://motkomania.pl/pl/c/Kremke-Soul-Wool/713"
+            },
+            "Laneras": {
+                "url": "https://motkomania.pl/pl/c/Laneras/775"
+            },
+            "Life in the Long Grass": {
+                "url": "https://motkomania.pl/pl/c/Life-in-the-Long-Grass/739"
+            },
+            "Majo Garn": {
+                "url": "https://motkomania.pl/pl/c/Majo-Garn/810"
+            },
+            "Malabrigo": {
+                "url": "https://motkomania.pl/pl/c/Malabrigo/240"
+            },
+            "Manos del Uruguay": {
+                "url": "https://motkomania.pl/pl/c/Manos-del-Uruguay/773"
+            },
+            "Meme Yarns": {
+                "url": "https://motkomania.pl/pl/c/Meme-Yarns/504"
+            },
+            "Noro": {
+                "url": "https://motkomania.pl/pl/c/Noro/774"
+            },
+            "Sandness Garn": {
+                "url": "https://motkomania.pl/pl/c/Sandness-Garn/805"
+            },
+            "Schoppel": {
+                "url": "https://motkomania.pl/pl/c/Schoppel/789"
+            }
+        }
+    },
+    "Włóczki wg koloru": {
+        "url": "https://motkomania.pl/pl/c/Wloczki-wg-koloru/22",
+        "sub_categories": {
+            "beżowy": {
+                "url": "https://motkomania.pl/pl/c/bezowy/32"
+            },
+            "biały": {
+                "url": "https://motkomania.pl/pl/c/bialy/26"
+            },
+            "brązowy": {
+                "url": "https://motkomania.pl/pl/c/brazowy/31"
+            },
+            "czarny": {
+                "url": "https://motkomania.pl/pl/c/czarny/24"
+            },
+            "czerwony": {
+                "url": "https://motkomania.pl/pl/c/czerwony/27"
+            },
+            "ecru": {
+                "url": "https://motkomania.pl/pl/c/ecru/59"
+            },
+            "fioletowy": {
+                "url": "https://motkomania.pl/pl/c/fioletowy/29"
+            },
+            "niebieski": {
+                "url": "https://motkomania.pl/pl/c/niebieski/34"
+            },
+            "pomarańczowy": {
+                "url": "https://motkomania.pl/pl/c/pomaranczowy/36"
+            },
+            "różowy": {
+                "url": "https://motkomania.pl/pl/c/rozowy/28"
+            },
+            "szary": {
+                "url": "https://motkomania.pl/pl/c/szary/30"
+            },
+            "turkusowy": {
+                "url": "https://motkomania.pl/pl/c/turkusowy/98"
+            },
+            "zielony": {
+                "url": "https://motkomania.pl/pl/c/zielony/69"
+            },
+            "żółty": {
+                "url": "https://motkomania.pl/pl/c/zolty/35"
+            }
+        }
+    },
+    "Włóczki wg rodzaju włókna": {
+        "url": "https://motkomania.pl/pl/c/Wloczki-wg-rodzaju-wlokna/23",
+        "sub_categories": {
+            "angora": {
+                "url": "https://motkomania.pl/pl/c/angora/809"
+            },
+            "len": {
+                "url": "https://motkomania.pl/pl/c/len/41"
+            },
+            "alpaka": {
+                "url": "https://motkomania.pl/pl/c/alpaka/720"
+            },
+            "moher": {
+                "url": "https://motkomania.pl/pl/c/moher/42"
+            },
+            "inne": {
+                "url": "https://motkomania.pl/pl/c/inne/45"
+            },
+            "wełna": {
+                "url": "https://motkomania.pl/pl/c/welna/38"
+            },
+            "bawełna": {
+                "url": "https://motkomania.pl/pl/c/bawelna/39"
+            },
+            "jedwab": {
+                "url": "https://motkomania.pl/pl/c/jedwab/40"
+            }
+        }
+    },
+    "Środki pielęgnacyjne": {
+        "url": "https://motkomania.pl/pl/c/Srodki-pielegnacyjne/626",
+        "sub_categories": {}
+    },
+    "Druty i akcesoria": {
+        "url": "https://motkomania.pl/pl/c/Druty-i-akcesoria/211",
+        "sub_categories": {
+            "Addi": {
+                "url": "https://motkomania.pl/pl/c/Addi/742"
+            },
+            "ChiaoGoo - druty i akcesoria": {
+                "url": "https://motkomania.pl/pl/c/ChiaoGoo-druty-i-akcesoria/733"
+            },
+            "Clover": {
+                "url": "https://motkomania.pl/pl/c/Clover/707"
+            },
+            "Coco Knits": {
+                "url": "https://motkomania.pl/pl/c/Coco-Knits/704"
+            },
+            "Cohana": {
+                "url": "https://motkomania.pl/pl/c/Cohana/712"
+            },
+            "HiyaHiya - druty i akcesoria": {
+                "url": "https://motkomania.pl/pl/c/HiyaHiya-druty-i-akcesoria/731"
+            },
+            "Knit Pro - druty i akcesoria": {
+                "url": "https://motkomania.pl/pl/c/Knit-Pro-druty-i-akcesoria/703"
+            },
+            "Lantern Moon": {
+                "url": "https://motkomania.pl/pl/c/Lantern-Moon/772"
+            },
+            "Lykke": {
+                "url": "https://motkomania.pl/pl/c/Lykke/757"
+            },
+            "Markery": {
+                "url": "https://motkomania.pl/pl/c/Markery/711"
+            },
+            "Nożyczki": {
+                "url": "https://motkomania.pl/pl/c/Nozyczki/710"
+            },
+            "Opry": {
+                "url": "https://motkomania.pl/pl/c/Opry/709"
+            },
+            "Przechowywanie": {
+                "url": "https://motkomania.pl/pl/c/Przechowywanie/734"
+            },
+            "Seeknit": {
+                "url": "https://motkomania.pl/pl/c/Seeknit/706"
+            },
+            "Tulip": {
+                "url": "https://motkomania.pl/pl/c/Tulip/708"
+            }
+        }
+    },
+    "Książki i czasopisma": {
+        "url": "https://motkomania.pl/pl/c/Ksiazki-i-czasopisma/764",
+        "sub_categories": {}
+    },
+    "Krosna i akcesoria": {
+        "url": "https://motkomania.pl/pl/c/Krosna-i-akcesoria/680",
+        "sub_categories": {
+            "Krosna": {
+                "url": "https://motkomania.pl/pl/c/Krosna/682"
+            },
+            "Ramy tkackie": {
+                "url": "https://motkomania.pl/pl/c/Ramy-tkackie/681"
+            },
+            "Akcesoria i i części": {
+                "url": "https://motkomania.pl/pl/c/Akcesoria-i-i-czesci/685"
+            }
+        }
+    },
+    "Kołowrotki i akcesoria": {
+        "url": "https://motkomania.pl/pl/c/Kolowrotki-i-akcesoria/679",
+        "sub_categories": {
+            "Kołowrotki": {
+                "url": "https://motkomania.pl/pl/c/Kolowrotki/683"
+            },
+            "Części i akcesoria": {
+                "url": "https://motkomania.pl/pl/c/Czesci-i-akcesoria/686"
+            }
+        }
+    },
+    "Gręplarki i inne": {
+        "url": "https://motkomania.pl/pl/c/Greplarki-i-inne/684",
+        "sub_categories": {}
+    },
+    "Czesanki": {
+        "url": "https://motkomania.pl/pl/c/Czesanki/691",
+        "sub_categories": {
+            "Angelina": {
+                "url": "https://motkomania.pl/pl/c/Angelina/701"
+            },
+            "Jedwab Sari": {
+                "url": "https://motkomania.pl/pl/c/Jedwab-Sari/700"
+            },
+            "Malabrigo Nube": {
+                "url": "https://motkomania.pl/pl/c/Malabrigo-Nube/692"
+            },
+            "Merino Fine": {
+                "url": "https://motkomania.pl/pl/c/Merino-Fine/693"
+            },
+            "Mieszane": {
+                "url": "https://motkomania.pl/pl/c/Mieszane/694"
+            }
+        }
+    },
+    "Dodatki": {
+        "url": "https://motkomania.pl/pl/c/Dodatki/754",
+        "sub_categories": {
+            "Pompony": {
+                "url": "https://motkomania.pl/pl/c/Pompony/695"
+            }
+        }
+    },
+    "Na prezent": {
+        "url": "https://motkomania.pl/pl/c/Na-prezent/736",
+        "sub_categories": {}
+    },
+    "Nowości": {
+        "url": "https://motkomania.pl/pl/new",
+        "sub_categories": {}
+    },
+    "Promocje": {
+        "url": "https://motkomania.pl/pl/promotions",
+        "sub_categories": {}
+    }
+}
