@@ -20,7 +20,7 @@ fi
 
 # Wykonanie dumpa
 echo "Ładowanie dumpa do bazy danych '$DB_NAME'..."
-docker -i exec $DB_CONTAINER sh -c "exec mysql -u$DB_USER -p$DB_PASSWD $DB_NAME" < $DUMP_FILE
+docker exec -i $DB_CONTAINER sh -c "exec mysql -u$DB_USER -p$DB_PASSWD $DB_NAME" < $DUMP_FILE
 
 if [ $? -eq 0 ]; then
   echo "Dump załadowany pomyślnie."

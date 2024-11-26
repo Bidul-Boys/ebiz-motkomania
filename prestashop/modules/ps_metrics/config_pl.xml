@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>ps_metrics</name>
+    <displayName><![CDATA[PrestaShop Metrics]]></displayName>
+    <version><![CDATA[4.0.9]]></version>
+    <description><![CDATA[Zoptymalizuj swoją działalność dzięki podejściu opartemu na danych, uzyskując pełny obraz swojej działalności w czasie rzeczywistym.]]></description>
+    <author><![CDATA[PrestaShop]]></author>
+    <tab><![CDATA[advertising_marketing]]></tab>
+	<confirmUninstall><![CDATA[Czy na pewno chcesz odinstalować ten moduł?]]></confirmUninstall>
+    <is_configurable>1</is_configurable>
+    <need_instance>0</need_instance>
+	<limited_countries></limited_countries>
+</module>

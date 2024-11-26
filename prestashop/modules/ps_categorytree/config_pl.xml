@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>ps_categorytree</name>
+    <displayName><![CDATA[Łącza drzewa kategorii]]></displayName>
+    <version><![CDATA[2.0.3]]></version>
+    <description><![CDATA[Pom&oacute;ż poruszać się&nbsp;odwiedzającym po Twoim sklepie poprzez pokazywanie im kategorii i ich podkategorii.]]></description>
+    <author><![CDATA[PrestaShop]]></author>
+    <tab><![CDATA[front_office_features]]></tab>
+    <is_configurable>1</is_configurable>
+    <need_instance>1</need_instance>
+	<limited_countries></limited_countries>
+</module>
