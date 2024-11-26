@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>contactform</name>
+    <displayName><![CDATA[Formularz kontaktpey]]></displayName>
+    <version><![CDATA[4.4.1]]></version>
+    <description><![CDATA[Help your customers get in touch when they need, add a contact form on your store.]]></description>
+    <author><![CDATA[PrestaShop]]></author>
+    <tab><![CDATA[front_office_features]]></tab>
+    <is_configurable>1</is_configurable>
+    <need_instance>1</need_instance>
+	<limited_countries></limited_countries>
+</module>

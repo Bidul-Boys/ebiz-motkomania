@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>statsstock</name>
+    <displayName><![CDATA[Dostępne ilości]]></displayName>
+    <version><![CDATA[2.0.1]]></version>
+    <description><![CDATA[Enrich your stats, add a tab showing the available quantities of products left for sale.]]></description>
+    <author><![CDATA[PrestaShop]]></author>
+    <tab><![CDATA[administration]]></tab>
+    <is_configurable>0</is_configurable>
+    <need_instance>0</need_instance>
+	<limited_countries></limited_countries>
+</module>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>ps_facetedsearch</name>
+    <displayName><![CDATA[Nawigacja fasetowa]]></displayName>
+    <version><![CDATA[3.14.1]]></version>
+    <description><![CDATA[Filtruj sw&oacute;j katalog, aby ułatwić odwiedzającym zobrazowanie drzewa kategorii i łatwe przeglądanie Twojego sklepu.]]></description>
+    <author><![CDATA[PrestaShop]]></author>
+    <tab><![CDATA[front_office_features]]></tab>
+    <is_configurable>1</is_configurable>
+    <need_instance>0</need_instance>
+	<limited_countries></limited_countries>
+</module>

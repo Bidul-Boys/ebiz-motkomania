@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>ps_imageslider</name>
+    <displayName><![CDATA[Slider zdjęć]]></displayName>
+    <version><![CDATA[3.1.3]]></version>
+    <description><![CDATA[Add sliding images to your homepage to welcome your visitors in a visual and friendly way.]]></description>
+    <author><![CDATA[PrestaShop]]></author>
+    <tab><![CDATA[front_office_features]]></tab>
+    <is_configurable>1</is_configurable>
+    <need_instance>0</need_instance>
+	<limited_countries></limited_countries>
+</module>
