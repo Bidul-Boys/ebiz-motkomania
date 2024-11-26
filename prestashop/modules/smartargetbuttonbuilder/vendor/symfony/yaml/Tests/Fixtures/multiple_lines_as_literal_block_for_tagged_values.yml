@@ -1,0 +1,2 @@
+data:
+    foo: !bar "foo\r\nline with trailing spaces:\n  \nbar\ninteger like line:\nComposerAutoloaderInit8e9b8f4b9638187e27299a55763ad272829456789\nempty line:\n\nbaz"

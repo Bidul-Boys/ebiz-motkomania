@@ -1,0 +1,25 @@
+{
+  "name": "prestashop/smartargetbuttonbuilder",
+  "description": "",
+  "config": {
+    "preferred-install": "dist",
+    "optimize-autoloader": true,
+    "prepend-autoloader": false,
+    "platform": {
+      "php": "7.4"
+    }
+  },
+  "require": {
+    "prestashop/prestashop-accounts-installer": "^1.0",
+    "prestashop/module-lib-service-container": "^1.4",
+    "prestashopcorp/module-lib-billing": "^3",
+    "prestashop/module-lib-mbo-installer": "^1.0"
+  },
+  "autoload": {
+    "classmap": [
+      "smartargetbuttonbuilder.php"
+    ]
+  },
+  "author": "PrestaShop",
+  "license": "MIT"
+}

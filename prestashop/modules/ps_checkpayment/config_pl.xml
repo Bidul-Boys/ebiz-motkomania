@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>ps_checkpayment</name>
+    <displayName><![CDATA[Czek]]></displayName>
+    <version><![CDATA[2.1.0]]></version>
+    <description><![CDATA[Display contact details blocks to make it easy for customers to pay by check on your store.]]></description>
+    <author><![CDATA[PrestaShop]]></author>
+    <tab><![CDATA[payments_gateways]]></tab>
+	<confirmUninstall><![CDATA[Jesteś pewien, że chcesz usunąć wszystkie ustawienia?]]></confirmUninstall>
+    <is_configurable>1</is_configurable>
+    <need_instance>1</need_instance>
+	<limited_countries></limited_countries>
+</module>
