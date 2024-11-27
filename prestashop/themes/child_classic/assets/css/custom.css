@@ -2,9 +2,4 @@
  * Custom code goes here.
  * A template should always ship with an empty custom.css
  */
- #header{ background-color: #58ccc8}
-
-
- .header-nav{ 
-    background-color: #58ccc8; 
-}
+ #header{ background: red !important; }
