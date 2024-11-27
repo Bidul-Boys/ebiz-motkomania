@@ -2,4 +2,9 @@
  * Custom code goes here.
  * A template should always ship with an empty custom.css
  */
- #header{ background: red !important; }
+
+ body {
+    font-family: Verdana,Geneva,sans-serif;
+ }
+
+ #header { background: #58ccc8; }
