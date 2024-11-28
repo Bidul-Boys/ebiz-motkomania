@@ -12,6 +12,16 @@
  #wrapper {
     background-color: transparent;
     padding-top: 1em;
+    width: 1180px;
+    margin-left: auto;
+    margin-right: auto;
+ }
+
+ #wrapper > .container {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
  }
 
  #header { background: #58ccc8; }
@@ -23,8 +33,13 @@
  #custom-text > p > span {
     text-align: start;
     font-size: 1.5em;
+    width: inherit;
+ }
+
+ #custom-text > .custom-text-header {
     border-top: 3px solid #58ccc8;
     border-bottom: 1px solid #d8d8d8;
+    text-align: left;
     padding: 0.3em 0.75em;
  }
 
@@ -34,6 +49,11 @@
  }
 
  #custom-text {
+    padding-left: 0;
+    padding-right: 0;
+ }
+
+ .block-categories {
     padding-left: 0;
     padding-right: 0;
  }
@@ -105,15 +125,25 @@
 
 #header > .header-top > .container {
     padding: 0 0 0 0;
+    width: 1180px;
 }
 
 #_desktop_user_info {
     padding-top: 20px;
     padding-bottom: 20px;
+    float: right;
 }
 
-#_desktop_user_info span {
+#_desktop_user_info a {
     color: white;
+}
+
+#_desktop_user_info a:hover {
+    color: white;
+}
+
+#_desktop_user_info img {
+    margin-right: 10px;
 }
 
 #header .header-nav .user-info {
@@ -129,12 +159,19 @@
 }
 
 #_desktop_cart {
-    width: 250px;
     background-color: #58ccc8;
     line-height: 40px;
     margin-left: 10px;
-    padding-left: 1em;
+    padding: 0 3em 0 1em;
     height: 44px;
+}
+
+#_desktop_cart > div {
+    width: 250px;
+}
+
+#_desktop_cart div {
+    width: 250px;
 }
 
 #_desktop_cart a {
@@ -176,7 +213,9 @@
 }
 
 #_desktop_top_menu {
-    margin-left: 22%;
+    margin-left: auto;
+    margin-right:auto;
+    width: 1180px;
     height: fit-content;
 }
 
@@ -188,12 +227,11 @@
 .header-top-right div {
     float: none !important;
     flex: 1;
-    align-self: flex-start;
 }
 
 .header-top-right {
     align-self: flex-start;
-    display: inline-flex;
+    display: flex;
 }
 
 #left-column {
@@ -205,7 +243,13 @@
     border-top: none;
 }
 
-
+.featured-products.clearfix > h2 {
+    text-align: left;
+    border-top: 3px solid #58ccc8;
+    border-bottom: 1px solid #d8d8d8;
+    padding: 0.3em 0.75em;
+    text-transform: none !important;
+}
 
 /* PRODUCT PAGE */
 
