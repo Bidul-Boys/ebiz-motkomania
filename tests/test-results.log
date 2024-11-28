@@ -1,0 +1,3 @@
+2024-11-28 04:40:12,677 - __main__ - INFO - Initialized WebDriver with configured window size
+2024-11-28 04:40:14,705 - __main__ - INFO - VAT invoice download initiated
+2024-11-28 04:40:14,705 - __main__ - INFO - Total Execution Time: 2.70 seconds
