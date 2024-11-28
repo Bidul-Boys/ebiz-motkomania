@@ -51,9 +51,9 @@
   {/block}
 
   {block name='product_features'}
-    {if $product.grouped_features}
+    {if !empty($product.grouped_features)} 
       <section class="product-features">
-        <p class="h6">{l s='Data sheet' d='Shop.Theme.Catalog'}</p>
+        {* <p class="h6">{l s='Data sheet' d='Shop.Theme.Catalog'}</p> *}
         <dl class="data-sheet">
           {foreach from=$product.grouped_features item=feature}
             <dt class="name">{$feature.name}</dt>
@@ -66,7 +66,7 @@
 
   {* if product have specific references, a table will be added to product details section *}
   {block name='product_specific_references'}
-    {if !empty($product.specific_references)}
+    {if !empty($product.specific_references) && !empty($product.features)}
       <section class="product-features">
         <p class="h6">{l s='Specific References' d='Shop.Theme.Catalog'}</p>
           <dl class="data-sheet">

@@ -80,15 +80,15 @@
 
             {block name='product_quantities'}
             {if $product.show_quantities}
-              <div class="product-quantities">
-                <label class="label" style="font-size:1 rem;">{l s='Dostępność:      ' d='Shop.Theme.Catalog'}</label>
+              <div class="product-quantities" style="font-size:1.2em;">
+                <span class="label">{l s='Dostępność:' d='Shop.Theme.Catalog'}</span>
                 <span data-stock="{$product.quantity}" data-allow-oosp="{$product.allow_oosp}">{$product.quantity} {$product.quantity_label}</span>
               </div>
             {/if}
 
             {if $product.quantity > 0}
                 <div class="availability">
-                  <span class="label">{l s='Wysyłka w:      48 godzin'}</span>
+                  <span class="label">{l s='Wysyłka w: 48 godzin'}</span>
                 </div>
             {/if}
 
@@ -227,17 +227,19 @@
                   
                 {/if}
               {/block}
-            
-              {block name='product_details'}
-                <div class="product-details">
+              
+              {if !empty($product.specific_references) || !empty($product.features)}
+                {block name='product_details'}
+                  <div class="product-details">
 
-                <div class="custom_description_title" style="margin-top:70px;">
-                  <h2>{l s='Product Details' d='Shop.Theme.Catalog'}</h2>
-                </div>
-                <div style="margin-bottom:20px;"> </div>
-                  {include file='catalog/_partials/product-details.tpl'}
-                </div>
-              {/block}
+                  <div class="custom_description_title" style="margin-top:70px;">
+                    <h2>{l s='Product Details' d='Shop.Theme.Catalog'}</h2>
+                  </div>
+                  <div style="margin-bottom:20px;"> </div>
+                    {include file='catalog/_partials/product-details.tpl'}
+                  </div>
+                {/block}
+              {/if}
 
 
 

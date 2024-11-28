@@ -35,15 +35,15 @@
 
     {block name='product_price'}
       <div
-        class="product-price h5 {if $product.has_discount}has-discount{/if}">
+        class="product-price {if $product.has_discount}has-discount{/if}">
 
         <div class="current-price">
-          <span class='current-price-value' content="{$product.rounded_display_price}">
+          <span class='current-price' content="{$product.rounded_display_price}">
             {capture name='custom_price'}{hook h='displayProductPriceBlock' product=$product type='custom_price' hook_origin='product_sheet'}{/capture}
             {if '' !== $smarty.capture.custom_price}
               {$smarty.capture.custom_price nofilter}
             {else}
-              Cena: {$product.price}
+              <span style="font-size:1.2em; color:#232323;;">Cena: </span><span style="color: #fa5843; font-size: 2em; font-weight: bold;">{$product.price} </span>
             {/if}
           </span>
 
