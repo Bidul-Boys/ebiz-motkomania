@@ -23,7 +23,7 @@ class Config:
     CHROMEDRIVER_PATH = '/usr/lib/chromium-browser/chromedriver'
     WINDOW_WIDTH = 1200
     WINDOW_HEIGHT = 700
-    INTERACTION_SLEEP_TIME = 1
+    INTERACTION_SLEEP_TIME = 0
 
 
 def setup_logger() -> logging.Logger:
@@ -71,6 +71,11 @@ def find_available_products(driver: webdriver.Chrome) -> List[WebElement]:
         product for product in products 
         if not product.find_elements(By.CSS_SELECTOR, ".product-flags .product-flag.out_of_stock")
     ]
+
+def wait_for_payment_status():
+    """Wait for manual intervention to change payment status."""
+    input("Payment Status Confirmation: Ensure payment is marked as 'Completed' to generate VAT invoice.\nPress ENTER when ready to proceed...")
+
 
 class PrestaShopTest:
     def __init__(self, driver: webdriver.Chrome, logger: logging.Logger):
@@ -354,25 +359,6 @@ class PrestaShopTest:
             self.driver.get(f"{Config.PRESTASHOP_URL}pl/")
             time.sleep(Config.INTERACTION_SLEEP_TIME)
 
-            # Login
-            self.driver.find_element(By.CSS_SELECTOR, "a:nth-child(2) > .hidden-sm-down").click()
-            time.sleep(Config.INTERACTION_SLEEP_TIME)
-
-            login_credentials = {
-                "field-email": "kubakubek@gmail.com",
-                "field-password": "kubakubek"
-            }
-
-            for field_id, value in login_credentials.items():
-                field = self.driver.find_element(By.ID, field_id)
-                field.click()
-                time.sleep(Config.INTERACTION_SLEEP_TIME)
-                field.send_keys(value)
-                time.sleep(Config.INTERACTION_SLEEP_TIME)
-
-            self.driver.find_element(By.ID, "submit-login").click()
-            time.sleep(Config.INTERACTION_SLEEP_TIME)
-
             # Navigate to invoice
             self.driver.find_element(By.CSS_SELECTOR, ".account > .hidden-sm-down").click()
             time.sleep(Config.INTERACTION_SLEEP_TIME)
@@ -405,7 +391,8 @@ def main():
             test.select_payment_method()
             test.confirm_order()
             test.check_order_status()
-            # test.download_vat_invoice()
+            wait_for_payment_status() 
+            test.download_vat_invoice()
 
             end_time = time.time()
             total_execution_time = end_time - start_time
