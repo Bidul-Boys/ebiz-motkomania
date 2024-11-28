@@ -80,7 +80,9 @@
  }
 
  .category-top-menu > li {
-    padding: 0.3em;
+    padding: 0.5em;
+    padding-bottom: 0.7em;
+    padding-top: 0.7em;
     border-bottom: 2px solid #d8d8d8;
  }
 
@@ -317,6 +319,22 @@ section #main{
     padding: 5px !important;
 }
 
-nav #wrapper .breadcrumb {
-    margin-top:10px !important;
+.breadcrumb  > ol { 
+    margin-top: 15px !important;
+    margin-bottom: -15px !important;
+}
+
+
+.quantity_sztuka_text {
+    color: #666;
+  display: inline;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 3px;
+  font-size: 1em !important;
+}
+
+#add-to-cart-or-refresh {
+    border-bottom: 2px solid #d8d8d8;
 }

@@ -87,8 +87,12 @@
             {/if}
 
             {if $product.quantity > 0}
-                <div class="availability">
+                <div class="availability" style="font-size:1.2em;">
                   <span class="label">{l s='Wysyłka w: 48 godzin'}</span>
+                </div>
+            {else}
+                <div class="availability" style="font-size:1.2em;">
+                  <span class="label">{l s='Dostępność: niedostępny - napisz lub zadzwoń'}</span>
                 </div>
             {/if}
 
