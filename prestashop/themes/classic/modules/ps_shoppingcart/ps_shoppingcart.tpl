@@ -27,8 +27,12 @@
     <div class="header">
         <a rel="nofollow" aria-label="{l s='Shopping cart link containing %nbProducts% product(s)' sprintf=['%nbProducts%' => $cart.products_count] d='Shop.Theme.Checkout'}" href="{$cart_url}">
         <img src="{$urls.img_url}cart-white.png"></img>
-        <span class="hidden-sm-down">{l s='Cart' d='Shop.Theme.Checkout'}</span>
-        <span class="cart-products-count">({$cart.products_count})</span>
+        <span class="hidden-sm-down">{l s='Koszyk:' d='Shop.Theme.Checkout'}</span>
+        {if $cart.products_count == 0}
+          <span class="cart-products-count">(pusty)</span>
+        {else}
+          <span class="cart-products-count">({$cart.products_count})</span>
+        {/if}
         </a>
     </div>
   </div>

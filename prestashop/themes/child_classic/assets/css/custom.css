@@ -7,8 +7,11 @@
     font-family: Verdana,Geneva,sans-serif;
  }
 
+ /* HOME PAGE, FOOTER, NAV, LEFT COLUMN (CATEGORY TREE) */
+
  #wrapper {
     background-color: transparent;
+    padding-top: 1em;
  }
 
  #header { background: #58ccc8; }
@@ -22,6 +25,7 @@
     font-size: 1.5em;
     border-top: 3px solid #58ccc8;
     border-bottom: 1px solid #d8d8d8;
+    padding: 0.3em 0.75em;
  }
 
  #custom-text > .inner-box {
@@ -37,6 +41,8 @@
 .block-categories .category-sub-menu li[data-depth="0"] > a {
     font-size: 16px;
     font-weight: 100;
+    padding-left: 1.5em;
+    width: inherit;
  }
 
  .category-sub-menu > li > a:hover {
@@ -44,15 +50,22 @@
     color: white;
  }
 
- .navbar-toggler {
-    visibility: hidden;
+ .category-sub-menu {
+    margin-top: 0 !important;
+    width: inherit;
  }
 
- .category-top-menu > li > a {
+ .navbar-toggler {
+    display: none;
+ }
+
+ .category-top-menu > li {
+    padding: 0.3em;
     border-bottom: 2px solid #d8d8d8;
  }
 
- .block-categories .h6 {
+ .block-categories .text-uppercase.h6 {
+    text-transform: none !important;
     font-size: 1.5em;
  }
 
@@ -65,6 +78,10 @@
     padding-top: 35px;
  }
 
+ .col-md-6.wrapper .h3.hidden-sm-down {
+    text-transform: none;
+ }
+
  .footer-container li a:hover {
     color: #58ccc8;
  }
@@ -75,10 +92,7 @@
 
 .category-top-menu {
     border-top: 3px solid #58ccc8;
-}
-
-#top-menu {
-    width: 100%;
+    width: auto;
 }
 
 #_desktop_logo {
@@ -117,17 +131,75 @@
 #_desktop_cart {
     width: 250px;
     background-color: #58ccc8;
-    float: right;
+    line-height: 40px;
+    margin-left: 10px;
+    padding-left: 1em;
+    height: 44px;
 }
 
 #_desktop_cart a {
     color: white;
+    align-self: center;
+    font-size: 1em;
 }
 
 #_desktop_cart a:hover {
     color: white;
 }
 
+#_desktop_top_menu a {
+    color: black;
+    font-weight: normal;
+    height: 100%;
+}
+
+#_desktop_top_menu a:hover {
+    color:white;
+    background-color: #58ccc8;
+}
+
+#_desktop_top_menu ul {
+    height: 48px;
+}
+
+#_desktop_top_menu li {
+    display: block;
+    float:left;
+    height: 100%;
+}
+
+#_desktop_top_menu .home-button {
+    background-color: #58ccc8;
+    height: 100%;
+    width: 50px;
+    text-align: center;
+}
+
+#_desktop_top_menu {
+    margin-left: 22%;
+    height: fit-content;
+}
+
+#search_widget form input {
+    height: 44px;
+    border-radius: 0;
+}
+
+.header-top-right div {
+    float: none !important;
+    flex: 1;
+    align-self: flex-start;
+}
+
+.header-top-right {
+    align-self: flex-start;
+    display: inline-flex;
+}
+
+#left-column {
+    padding-left: 0;
+    padding-right: 0;
+}
 
 
 
