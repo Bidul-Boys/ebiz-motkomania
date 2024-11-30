@@ -24,7 +24,7 @@
  *}
 {if !empty($subcategories)}
   {if (isset($display_subcategories) && $display_subcategories eq 1) || !isset($display_subcategories) }
-    <div id="subcategories" class="card card-block">
+    {* <div id="subcategories" class="card card-block">
       <h2 class="subcategory-heading">{l s='Subcategories' d='Shop.Theme.Category'}</h2>
 
       <ul class="subcategories-list">
@@ -45,6 +45,6 @@
           </li>
         {/foreach}
       </ul>
-    </div>
+    </div> *}
   {/if}
 {/if}

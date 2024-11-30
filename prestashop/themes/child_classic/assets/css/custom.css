@@ -447,3 +447,32 @@ section #main{
 #add-to-cart-or-refresh {
     border-bottom: 2px solid #d8d8d8;
 }
+
+
+#main .page-header{
+    padding-left: 20px;
+  margin-top: 10px;
+  padding-bottom: 2.5px;
+  border-bottom: 2px solid #d8d8d8;
+}
+
+
+/* CATEGORY PAGE */
+
+.price{
+    font-style: normal !important;
+    font-size: 2.0em !important;
+  line-height: 18px !important;
+  color: #317775 !important;
+  font-weight: 400 !important;
+  margin-top: 20px !important;
+}
+
+.product-title a{
+    color: black !important;
+}
+
+
+#js-product-list-header > .block-category{
+    border-bottom: 2px solid #d8d8d8;
+}
