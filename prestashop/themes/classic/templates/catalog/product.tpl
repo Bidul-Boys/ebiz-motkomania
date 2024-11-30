@@ -82,13 +82,13 @@
             {if $product.show_quantities}
               <div class="product-quantities" style="font-size:1.2em;">
                 <span class="label">{l s='Dostępność:' d='Shop.Theme.Catalog'}</span>
-                <span data-stock="{$product.quantity}" data-allow-oosp="{$product.allow_oosp}">{$product.quantity} {$product.quantity_label}</span>
+                <span style="margin-left:15px;" data-stock="{$product.quantity}" data-allow-oosp="{$product.allow_oosp}">{$product.quantity} {$product.quantity_label}</span>
               </div>
             {/if}
 
             {if $product.quantity > 0}
                 <div class="availability" style="font-size:1.2em;">
-                  <span class="label">{l s='Wysyłka w: 48 godzin'}</span>
+                  <span class="label"> Wysyłka w: <span style="margin-left: 23px;"> 48 godzin </span> </span>
                 </div>
             {else}
                 <div class="availability" style="font-size:1.2em;">
@@ -227,7 +227,9 @@
                     <h2>{l s='Description' d='Shop.Theme.Catalog'}</h2>
                   </div>
                   <div style="margin-bottom:20px;"> </div>
-                    {$product.description nofilter}
+                    <div style="margin-left: 10px;"> 
+                      {$product.description nofilter} 
+                    </div>
                   
                 {/if}
               {/block}

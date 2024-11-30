@@ -43,7 +43,7 @@
             {if '' !== $smarty.capture.custom_price}
               {$smarty.capture.custom_price nofilter}
             {else}
-              <span style="font-size:1.2em; color:#232323;;">Cena: </span><span style="color: #fa5843; font-size: 2em; font-weight: bold;">{$product.price} </span>
+              <span style="font-size:1.2em; color:#232323;;">Cena: </span><span style="color: #fa5843; font-size: 2em; font-weight: bold; margin-left: 60px;">{$product.price} </span>
             {/if}
           </span>
 
