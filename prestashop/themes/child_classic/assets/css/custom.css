@@ -310,6 +310,56 @@
     line-height: 35px;
 }
 
+.blogpost_header {
+    text-transform: uppercase;
+    font-size: 1.4em;
+    border-bottom: 1px solid #d8d8d8;
+    padding: .7em 0;
+    margin-bottom: 0.5em;
+}
+
+.blogpost_info {
+    color: #a6a6a6;
+    line-height: 18px;
+    font-size: 100%;
+    margin-bottom: 2em;
+}
+
+.blogpost_info .blogpost_black{
+    color: black;
+}
+
+.blogpost_content {
+    border-bottom: 1px dashed #d8d8d8;
+    padding-bottom: 1.5em;
+    margin-bottom: 1em;
+}
+
+.blogpost_content img {
+    height: 300px;
+    width: 236.9px;
+    display: inline-block;
+}
+
+.blogpost_content p {
+    margin: 1em 0;
+    font-size: 14px;
+    color: black;
+    line-height: 18px;
+}
+
+.blogpost_content table {
+    border-collapse: initial;
+    border-spacing: 15px;
+}
+
+.blogpost a {
+    color: #317775;
+    font-weight: bold;
+    float: right;
+    line-height: 18px;
+}
+
 /* PRODUCT PAGE */
 
 section #main{
