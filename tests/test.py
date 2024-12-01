@@ -165,8 +165,8 @@ class PrestaShopTest:
         """Add multiple products to the cart from different categories."""
         try:
             categories = [
-                f"{Config.PRESTASHOP_URL}pl/31-druty-i-akcesoria",
-                f"{Config.PRESTASHOP_URL}pl/22-wloczki-wg-rodzaju-wlokna"
+                f"{Config.PRESTASHOP_URL}pl/187-druty-i-akcesoria",
+                f"{Config.PRESTASHOP_URL}pl/178-wloczki-wg-rodzaju-wlokna"
             ]
 
             for _ in range(10):
@@ -213,14 +213,15 @@ class PrestaShopTest:
 
             # Determine quantity
             quantity_input = self.driver.find_element(By.CSS_SELECTOR, "#quantity_wanted")
-            quantity_input.send_keys(Keys.CONTROL + "a")
-            quantity_input.send_keys(Keys.DELETE)
-            time.sleep(Config.INTERACTION_SLEEP_TIME)
+            if quantity_input:
+                quantity_input.send_keys(Keys.CONTROL + "a")
+                quantity_input.send_keys(Keys.DELETE)
+                time.sleep(Config.INTERACTION_SLEEP_TIME)
 
-            # Set quantity based on whether it's in the last items category
-            quantity = 1 if is_last_items else random.randint(1, 3)
-            quantity_input.send_keys(str(quantity))
-            time.sleep(Config.INTERACTION_SLEEP_TIME)
+                # Set quantity based on whether it's in the last items category
+                quantity = 1 if is_last_items else random.randint(1, 3)
+                quantity_input.send_keys(str(quantity))
+                time.sleep(Config.INTERACTION_SLEEP_TIME)
 
             # Add to cart
             add_to_cart_button = self.driver.find_element(By.CSS_SELECTOR, ".add-to-cart")

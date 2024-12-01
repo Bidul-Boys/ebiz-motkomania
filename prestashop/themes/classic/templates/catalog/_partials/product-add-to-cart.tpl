@@ -25,7 +25,7 @@
 <div class="product-add-to-cart js-product-add-to-cart">
   {if !$configuration.is_catalog}
     
-    {if $product.availability == 'available'}
+    {if $product.quantity > 0}
       {block name='product_quantity'}
         <div class="product-quantity clearfix">
           <div class="qty">
