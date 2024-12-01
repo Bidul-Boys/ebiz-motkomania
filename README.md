@@ -11,12 +11,12 @@ This is an e-commerce project built with PrestaShop for the Electronic Business 
 - Selenium - Python library for browser automation
 
 ## Key Features
-- Scraped data from the original store (over 1000 products form 4 categories with 2 subcategories with pictures, descriptions and prices)
+- Scraped data from the original store (over 1000 products form 4 categories with 2 subcategories each, their pictures, descriptions and prices)
 - SSL certificate and key for secure connections
 - Automatic import of scraped data to the store
 - Multiple payment methods integration
 - Multiple delivery methods integration
-- Product variations (seewing needles length)
+- Product variations
 - Product promotions
 - Recreation of the original store design
 - Automated tests for the store
@@ -29,7 +29,7 @@ This is an e-commerce project built with PrestaShop for the Electronic Business 
 4. Run docker compose up
 5. Create cert directory and place there your ssl certificate and key files
 6. Run enable_ssh.sh
-7. Run db_dump.sh
+7. Run db_load.sh
 
 
 ## Team
