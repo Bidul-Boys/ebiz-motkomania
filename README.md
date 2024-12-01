@@ -33,7 +33,7 @@ This is an e-commerce project built with PrestaShop for the Electronic Business 
 
 
 ## Team
-- [@Michal-Sugalski](https://github.com/mikkelangelas)
+- [@Michał-Sugalski](https://github.com/mikkelangelas)
 - [@Lucjan-Gackowski](https://github.com/varrios)
 - [@Jakub-Falk](https://github.com/kvba1337)
-- [@Stanisław-Grochowski](https://github.com/Grochmank)  
+- [@Stanisław-Grochowski](https://github.com/Grochman)  
