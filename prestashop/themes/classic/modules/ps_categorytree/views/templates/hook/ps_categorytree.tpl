@@ -24,7 +24,6 @@
  *}
 
 {function name="categories" nodes=[] depth=0}
-  {debug}
   {strip}
     {if $nodes|count}
       <ul class="category-sub-menu">
