@@ -1,0 +1,15 @@
+2024-11-28 19:58:53,144 - __main__ - INFO - Initialized WebDriver with configured window size
+2024-11-28 19:58:53,485 - __main__ - INFO - Opening registration page
+2024-11-28 19:58:54,980 - __main__ - INFO - Account registration successful
+2024-11-28 19:58:55,112 - __main__ - INFO - Searching for a product
+2024-11-28 19:58:55,940 - __main__ - INFO - Product added to cart successfully
+2024-11-28 19:59:09,800 - __main__ - INFO - Successfully added 10 products to cart
+2024-11-28 19:59:30,042 - __main__ - INFO - Navigated to cart page
+2024-11-28 19:59:30,293 - __main__ - INFO - Removed 3 items from cart
+2024-11-28 20:00:10,817 - __main__ - INFO - Order details filled successfully
+2024-11-28 20:00:30,685 - __main__ - INFO - Delivery option selected
+2024-11-28 20:00:50,260 - __main__ - INFO - Payment method selected
+2024-11-28 20:00:51,228 - __main__ - INFO - Order confirmed successfully
+2024-11-28 20:00:52,089 - __main__ - INFO - Order details accessed successfully
+2024-11-28 20:01:01,729 - __main__ - INFO - VAT invoice download initiated
+2024-11-28 20:01:01,730 - __main__ - INFO - Total Execution Time: 129.42 seconds
