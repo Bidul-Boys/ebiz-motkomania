@@ -23,9 +23,9 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 <section class="featured-products clearfix">
-  <img class="brands-img" src="{$urls.img_url}brands.png" />
+  <img class="brands-img" src="{$urls.img_url}brands.png"/>
   <h2 class="h2 products-section-title text-uppercase">
-    {l s='Popular Products' d='Shop.Theme.Catalog'}
+    {l s='Nowości' d='Shop.Theme.Catalog'}
   </h2>
   {include file="catalog/_partials/productlist.tpl" products=$products cssClass="row" productClass="col-xs-12 col-sm-6 col-lg-4 col-xl-3"}
   <div class="blogpost">
