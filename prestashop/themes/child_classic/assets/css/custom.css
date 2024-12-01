@@ -476,3 +476,48 @@ section #main{
 #js-product-list-header > .block-category{
     border-bottom: 2px solid #d8d8d8;
 }
+
+
+
+.category-sub-menu {
+    list-style: none  !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .category-sub-menu li {
+    margin: 5px 0 !important;
+  }
+  
+  .category-sub-menu li.current > a {
+    font-weight: bold !important;
+    text-decoration: underline !important;
+  }
+  
+  
+  .category-sub-menu .collapse.show {
+    display: block !important;
+  }
+  
+  .category-top-menu > li > a.selected {
+    color: #007bff !important;
+  }
+
+  .active > .collapse{
+    display: inline-block !important;
+  }
+
+
+  .category-sub-menu > li > a{
+    display: inline-block;
+    width: 295px;
+    padding: .2em 1.5em;
+    padding-left: 60px; 
+  }
+
+
+
+  .block-categories .category-sub-link li:hover{
+    background-color: #58ccc8;
+    color: white;
+  }
