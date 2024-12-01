@@ -1,86 +1,37 @@
-2024-12-01 20:37:41,027 - __main__ - INFO - Initialized WebDriver with configured window size
-2024-12-01 20:37:42,599 - __main__ - INFO - Opening registration page
-2024-12-01 20:37:57,610 - __main__ - INFO - Account registration successful
-2024-12-01 20:37:58,990 - __main__ - INFO - Searching for a product
-2024-12-01 20:38:05,072 - __main__ - INFO - Product added to cart successfully
-2024-12-01 20:38:42,076 - __main__ - ERROR - Error adding products to cart: Message: no such element: Unable to locate element: {"method":"css selector","selector":".add-to-cart"}
+2024-12-01 21:23:09,982 - __main__ - INFO - Initialized WebDriver with configured window size
+2024-12-01 21:23:10,541 - __main__ - INFO - Opening registration page
+2024-12-01 21:23:14,477 - __main__ - INFO - Account registration successful
+2024-12-01 21:23:14,864 - __main__ - INFO - Searching for a product
+2024-12-01 21:23:16,148 - __main__ - INFO - Product added to cart successfully
+2024-12-01 21:23:57,196 - __main__ - INFO - Successfully added 10 products to cart
+2024-12-01 21:23:57,888 - __main__ - INFO - Navigated to cart page
+2024-12-01 21:23:58,278 - __main__ - INFO - Removed 3 items from cart
+2024-12-01 21:24:01,018 - __main__ - INFO - Order details filled successfully
+2024-12-01 21:24:01,968 - __main__ - INFO - Delivery option selected
+2024-12-01 21:24:02,075 - __main__ - INFO - Payment method selected
+2024-12-01 21:24:05,486 - __main__ - INFO - Order confirmed successfully
+2024-12-01 21:24:06,901 - __main__ - INFO - Order details accessed successfully
+2024-12-01 21:24:13,938 - __main__ - ERROR - Error downloading VAT invoice: Message: no such element: Unable to locate element: {"method":"css selector","selector":".text-sm-center > a > .material-icons"}
   (Session info: chrome=131.0.6778.85); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 Stacktrace:
-#0 0x55c782cfa8da <unknown>
-#1 0x55c782824530 <unknown>
-#2 0x55c7828724d6 <unknown>
-#3 0x55c782872771 <unknown>
-#4 0x55c7828b7624 <unknown>
-#5 0x55c78289643d <unknown>
-#6 0x55c7828b49e7 <unknown>
-#7 0x55c7828961b3 <unknown>
-#8 0x55c782864e92 <unknown>
-#9 0x55c782865e6e <unknown>
-#10 0x55c782cc933f <unknown>
-#11 0x55c782ccd45d <unknown>
-#12 0x55c782cb7987 <unknown>
-#13 0x55c782ccdbd1 <unknown>
-#14 0x55c782c9f72e <unknown>
-#15 0x55c782ce95e8 <unknown>
-#16 0x55c782ce97ea <unknown>
-#17 0x55c782cf9548 <unknown>
-#18 0x7ff52f188ac3 <unknown>
+#0 0x55abf22698da <unknown>
+#1 0x55abf1d93530 <unknown>
+#2 0x55abf1de14d6 <unknown>
+#3 0x55abf1de1771 <unknown>
+#4 0x55abf1e26624 <unknown>
+#5 0x55abf1e0543d <unknown>
+#6 0x55abf1e239e7 <unknown>
+#7 0x55abf1e051b3 <unknown>
+#8 0x55abf1dd3e92 <unknown>
+#9 0x55abf1dd4e6e <unknown>
+#10 0x55abf223833f <unknown>
+#11 0x55abf223c45d <unknown>
+#12 0x55abf2226987 <unknown>
+#13 0x55abf223cbd1 <unknown>
+#14 0x55abf220e72e <unknown>
+#15 0x55abf22585e8 <unknown>
+#16 0x55abf22587ea <unknown>
+#17 0x55abf2268548 <unknown>
+#18 0x7f082002bac3 <unknown>
 
-2024-12-01 20:38:42,196 - __main__ - ERROR - Test sequence failed: Message: no such element: Unable to locate element: {"method":"css selector","selector":".add-to-cart"}
-  (Session info: chrome=131.0.6778.85); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Stacktrace:
-#0 0x55c782cfa8da <unknown>
-#1 0x55c782824530 <unknown>
-#2 0x55c7828724d6 <unknown>
-#3 0x55c782872771 <unknown>
-#4 0x55c7828b7624 <unknown>
-#5 0x55c78289643d <unknown>
-#6 0x55c7828b49e7 <unknown>
-#7 0x55c7828961b3 <unknown>
-#8 0x55c782864e92 <unknown>
-#9 0x55c782865e6e <unknown>
-#10 0x55c782cc933f <unknown>
-#11 0x55c782ccd45d <unknown>
-#12 0x55c782cb7987 <unknown>
-#13 0x55c782ccdbd1 <unknown>
-#14 0x55c782c9f72e <unknown>
-#15 0x55c782ce95e8 <unknown>
-#16 0x55c782ce97ea <unknown>
-#17 0x55c782cf9548 <unknown>
-#18 0x7ff52f188ac3 <unknown>
-Traceback (most recent call last):
-  File "/home/mich/ebiz-motkomania/tests/test.py", line 388, in main
-    test.add_10_products_to_cart()
-  File "/home/mich/ebiz-motkomania/tests/test.py", line 184, in add_10_products_to_cart
-    self._select_and_add_random_product()
-  File "/home/mich/ebiz-motkomania/tests/test.py", line 227, in _select_and_add_random_product
-    add_to_cart_button = self.driver.find_element(By.CSS_SELECTOR, ".add-to-cart")
-  File "/home/mich/.local/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py", line 770, in find_element
-    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
-  File "/home/mich/.local/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py", line 384, in execute
-    self.error_handler.check_response(response)
-  File "/home/mich/.local/lib/python3.10/site-packages/selenium/webdriver/remote/errorhandler.py", line 232, in check_response
-    raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":".add-to-cart"}
-  (Session info: chrome=131.0.6778.85); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Stacktrace:
-#0 0x55c782cfa8da <unknown>
-#1 0x55c782824530 <unknown>
-#2 0x55c7828724d6 <unknown>
-#3 0x55c782872771 <unknown>
-#4 0x55c7828b7624 <unknown>
-#5 0x55c78289643d <unknown>
-#6 0x55c7828b49e7 <unknown>
-#7 0x55c7828961b3 <unknown>
-#8 0x55c782864e92 <unknown>
-#9 0x55c782865e6e <unknown>
-#10 0x55c782cc933f <unknown>
-#11 0x55c782ccd45d <unknown>
-#12 0x55c782cb7987 <unknown>
-#13 0x55c782ccdbd1 <unknown>
-#14 0x55c782c9f72e <unknown>
-#15 0x55c782ce95e8 <unknown>
-#16 0x55c782ce97ea <unknown>
-#17 0x55c782cf9548 <unknown>
-#18 0x7ff52f188ac3 <unknown>
-
+2024-12-01 21:24:13,938 - __main__ - INFO - Total Execution Time: 64.68 seconds
