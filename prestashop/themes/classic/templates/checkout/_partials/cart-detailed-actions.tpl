@@ -29,11 +29,11 @@
         {$cart.minimalPurchaseRequired}
       </div>
       <div class="text-sm-center">
-        <button type="button" class="btn btn-primary disabled" disabled>{l s='Proceed to checkout' d='Shop.Theme.Actions'}</button>
+        <button type="button" class="btn btn-primary disabled" disabled>{l s='Przejdź do kasy' d='Shop.Theme.Actions'}</button>
       </div>
     {elseif empty($cart.products) }
       <div class="text-sm-center">
-        <button type="button" class="btn btn-primary disabled" disabled>{l s='Proceed to checkout' d='Shop.Theme.Actions'}</button>
+        <button type="button" class="btn btn-primary disabled" disabled>{l s='Przejdź do kasy' d='Shop.Theme.Actions'}</button>
       </div>
     {else}
       <div class="text-sm-center">
