@@ -567,3 +567,49 @@ section #main{
     background-image: url('{$urls.img_url}arrow_down_light.png');
     color:white;
   }
+
+  .advanced-search {
+    float: right;
+    color: #000;
+  text-decoration: underline;
+  padding-top: 0.2em;
+  font-size: 0.9em;
+
+  }
+
+  #box_search .search-input {
+    float: left;
+    width: 70%;
+    border:none;
+    background-color: #f5f8fd;
+
+    border-color: rgb(216, 216, 216);;
+    border-right: none;
+  }
+
+  .innerbox form input {
+    height: 40px;
+    min-height: 40px;
+    margin-left: 20px;
+    background-color: #f5f8fd;
+
+
+    border-left-color: rgb(216, 216, 216);
+  }
+
+  .custom_search_form { 
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 70px;
+    
+  }
+
+
+  .btn {
+    background-color: #f5f8fd;
+    border-color: #d8d8d8;
+      border-left-color: rgb(216, 216, 216);
+    border:none;
+    color: #58ccc8;
+    height:40px;
+  }
