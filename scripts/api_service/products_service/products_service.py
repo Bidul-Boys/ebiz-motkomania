@@ -1,6 +1,6 @@
 import json
 import random
-from time import sleep
+from time import sleep, time
 from dotenv import load_dotenv, dotenv_values 
 import os
 from prestapyt import PrestaShopWebServiceDict
@@ -42,7 +42,7 @@ def delete_existing_products():
         print(f"Deleted all products")
 
 
-
+err_counter = 0
 def add_products():
     excluded_features = ['price', 'img', 'category', 'sub_category', 'description', 'producent_img', 'producent_link']
     
@@ -238,7 +238,7 @@ def add_products():
         sub_category_id = categories_ids.get(product_info.get('sub_category'))
         category_id = categories_ids.get(product_info.get('category'))
         
-        product_template['product']['id_category_default'] = category_id
+        product_template['product']['id_category_default'] = sub_category_id
         product_template['product']['associations']['categories']['category']['id'] = sub_category_id
         product_template['product']['name']['language']['value'] = product_name
         product_template['product']['price'] = product_info.get('price')
@@ -316,10 +316,8 @@ def add_products():
         
         # imgs
         
-        base_img_url = product_info.get('img')
         img_prefix = 'https://motkomania.pl'
         img_urls = [f"{img_prefix}{product_info.get(feature)}" for feature in product_info.keys() if feature.startswith('product_img')]
-        img_urls.append(base_img_url)
         
         no_of_images = len(img_urls)
         
@@ -331,21 +329,22 @@ def add_products():
                     files = {
                         "image": image_file
                     }
-                    #response_code = 404
-                    
+                    response_code = 404
                     response = requests.post(
                         endpoint,
                         files=files, 
                         auth=(api_key, '')
                     )
-                    #response_code = response.status_code
+                        
                     
                 if response.status_code == 200 or response.status_code == 201:
                     print("Image uploaded successfully!")
                 else:
                     print(f"Failed to upload image: {response.status_code}")
+                    err_counter +=1
             except Exception as e:
                 print(f"Error while uploading image: {e}")
                 continue
         print(f"Product {product_name} finished adding - ID {added_product_id}")
+    print(f"Error counter: {err_counter}")
 
