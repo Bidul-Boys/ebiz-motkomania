@@ -522,3 +522,48 @@ section #main{
     background-color: #58ccc8;
     color: white;
   }
+
+
+
+  .product-miniature .product-title{
+    padding-bottom:52px;
+  }
+
+
+  /* PRODUCER SEARCH */
+
+  .boxhead {
+    border-top: 3px solid #58ccc8;
+    border-bottom: 1px solid #d8d8d8;
+    margin-bottom: 0.7em;
+    line-height: 40px;
+  }
+
+  .boxhead > span {
+    margin-top: 0;
+    padding: .5em;
+    font-size: 1.5em;
+  }
+
+  select option {
+    background-color: #fff;
+    color: #111;
+  }
+
+  #box_producers_select{
+    background: url('{$urls.img_url}arrow-grey-down.png') no-repeat 95% 50% #f5f8fd;
+    width: 250px;
+    height: 40px;
+    box-sizing: border-box;
+    border: 1px solid #6d6a6a;
+    margin-left:24px;
+    margin-top: 15px;
+  }
+
+
+#box_producers_select:hover {
+    background-color: #58ccc8;
+    border-color: #58ccc8;
+    background-image: url('{$urls.img_url}arrow_down_light.png');
+    color:white;
+  }

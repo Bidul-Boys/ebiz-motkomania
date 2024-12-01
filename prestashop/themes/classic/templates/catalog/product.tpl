@@ -238,13 +238,15 @@
                 {block name='product_details'}
                   <div class="product-details">
 
-                  <div class="custom_description_title" style="margin-top:70px;">
+                  <div class="custom_description_title" style="margin-top:70px; ">
                     <h2>{l s='Product Details' d='Shop.Theme.Catalog'}</h2>
                   </div>
                   <div style="margin-bottom:20px;"> </div>
                     {include file='catalog/_partials/product-details.tpl'}
                   </div>
                 {/block}
+              {else}
+                <div style="margin-bottom:150px;"> </div>
               {/if}
 
 

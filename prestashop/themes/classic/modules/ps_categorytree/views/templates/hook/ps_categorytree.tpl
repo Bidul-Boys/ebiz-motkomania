@@ -84,4 +84,5 @@
     <li><a class="text-uppercase h6">{$categories.name}</a></li>
     <li>{categories nodes=$categories.children}</li>
   </ul>
+  
 </div>
