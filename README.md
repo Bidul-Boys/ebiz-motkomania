@@ -25,8 +25,15 @@ This is an e-commerce project built with PrestaShop for the Electronic Business 
 ## Installation & Setup
 1. Clone the repository
 2. Delete the prestashop directory
-3. Create .env file based on .env.example
+3. Create .env file
 4. Run docker compose up
 5. Create cert directory and place there your ssl certificate and key files
 6. Run enable_ssh.sh
 7. Run db_dump.sh
+
+
+## Team
+- [@Michal-Sugalski](https://github.com/mikkelangelas)
+- [@Lucjan-Gackowski](https://github.com/varrios)
+- [@Jakub-Falk](https://github.com/kvba1337)
+- [@Stanisław-Grochowski](https://github.com/Grochmank)  
