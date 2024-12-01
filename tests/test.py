@@ -169,7 +169,9 @@ class PrestaShopTest:
                 f"{Config.PRESTASHOP_URL}pl/178-wloczki-wg-rodzaju-wlokna"
             ]
 
-            for _ in range(10):
+            found = 0
+
+            while found < 10:
                 # Alternate between categories
                 category_url = random.choice(categories)
                 self.driver.get(category_url)
@@ -181,7 +183,10 @@ class PrestaShopTest:
                 time.sleep(Config.INTERACTION_SLEEP_TIME)
 
                 # Select and add a random product
-                self._select_and_add_random_product()
+                if self._select_and_add_random_product():
+                    found += 1
+
+
 
             self.logger.info("Successfully added 10 products to cart")
 
@@ -205,28 +210,29 @@ class PrestaShopTest:
             time.sleep(Config.INTERACTION_SLEEP_TIME)
 
             # Check if the product is in the last items category 
-            try:
-                last_items_indicator = self.driver.find_element(By.CSS_SELECTOR, ".material-icons.product-last-items")
-                is_last_items = last_items_indicator.is_displayed()
-            except NoSuchElementException:
-                is_last_items = False
 
             # Determine quantity
-            quantity_input = self.driver.find_element(By.CSS_SELECTOR, "#quantity_wanted")
-            if quantity_input:
-                quantity_input.send_keys(Keys.CONTROL + "a")
-                quantity_input.send_keys(Keys.DELETE)
-                time.sleep(Config.INTERACTION_SLEEP_TIME)
+            try:
+                quantity_input = self.driver.find_element(By.CSS_SELECTOR, "#quantity_wanted")
+                items_quantity = int(self.driver.find_element(By.CSS_SELECTOR, ".product-quantities span[data-stock]").get_attribute("data-stock"))
+            except NoSuchElementException:
+                return False
 
-                # Set quantity based on whether it's in the last items category
-                quantity = 1 if is_last_items else random.randint(1, 3)
-                quantity_input.send_keys(str(quantity))
-                time.sleep(Config.INTERACTION_SLEEP_TIME)
+            quantity_input.send_keys(Keys.CONTROL + "a")
+            quantity_input.send_keys(Keys.DELETE)
+            time.sleep(Config.INTERACTION_SLEEP_TIME)
+
+            # Set quantity based on whether it's in the last items category
+            quantity = 1 if items_quantity <= 3 else random.randint(1, 3)
+            quantity_input.send_keys(str(quantity))
+            time.sleep(Config.INTERACTION_SLEEP_TIME)
 
             # Add to cart
             add_to_cart_button = self.driver.find_element(By.CSS_SELECTOR, ".add-to-cart")
             add_to_cart_button.click()
             time.sleep(Config.INTERACTION_SLEEP_TIME)
+
+            return True
 
     def remove_3_products_from_cart(self):
         """Remove up to three items from the shopping cart."""
