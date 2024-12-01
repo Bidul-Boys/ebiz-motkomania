@@ -44,11 +44,20 @@
       </a>
     {else}
       <a
+        href="{$urls.pages.register}"
+        title="{l s='Register new customer account' d='Shop.Theme.Customeraccount'}"
+        rel="nofollow"
+      >
+        <img src="{$urls.img_url}okularnik.png"></img>
+        <span class="hidden-sm-down">{l s='Zarejestruj się' d='Shop.Theme.Actions'}</span>
+      </a>
+
+      <a
         href="{$urls.pages.my_account}"
         title="{l s='Log in to your customer account' d='Shop.Theme.Customeraccount'}"
         rel="nofollow"
       >
-        <i class="material-icons">&#xE7FF;</i>
+        <img src="{$urls.img_url}login.png">
         <span class="hidden-sm-down">{l s='Sign in' d='Shop.Theme.Actions'}</span>
       </a>
     {/if}

@@ -5,8 +5,5 @@
 # Python
 __pycache__/
 
-# Environment variables
-.env
-
 # Certificate
 cert/

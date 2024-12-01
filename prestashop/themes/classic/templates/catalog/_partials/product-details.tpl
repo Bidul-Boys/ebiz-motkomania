@@ -1,4 +1,4 @@
-<div class="js-product-details tab-pane fade{if !$product.description} in active{/if}"
+<div class="js-product-details tab-pane {if !$product.description} in active{/if}"
      id="product-details"
      data-product="{$product.embedded_attributes|json_encode}"
      role="tabpanel"
@@ -26,14 +26,14 @@
     {/if}
   {/block}
 
-  {block name='product_quantities'}
+  {* {block name='product_quantities'}
     {if $product.show_quantities}
       <div class="product-quantities">
         <label class="label">{l s='In stock' d='Shop.Theme.Catalog'}</label>
         <span data-stock="{$product.quantity}" data-allow-oosp="{$product.allow_oosp}">{$product.quantity} {$product.quantity_label}</span>
       </div>
     {/if}
-  {/block}
+  {/block} *}
 
   {block name='product_availability_date'}
     {if $product.availability_date}
@@ -51,9 +51,9 @@
   {/block}
 
   {block name='product_features'}
-    {if $product.grouped_features}
+    {if !empty($product.grouped_features)} 
       <section class="product-features">
-        <p class="h6">{l s='Data sheet' d='Shop.Theme.Catalog'}</p>
+        {* <p class="h6">{l s='Data sheet' d='Shop.Theme.Catalog'}</p> *}
         <dl class="data-sheet">
           {foreach from=$product.grouped_features item=feature}
             <dt class="name">{$feature.name}</dt>
@@ -66,7 +66,7 @@
 
   {* if product have specific references, a table will be added to product details section *}
   {block name='product_specific_references'}
-    {if !empty($product.specific_references)}
+    {if !empty($product.specific_references) && !empty($product.features)}
       <section class="product-features">
         <p class="h6">{l s='Specific References' d='Shop.Theme.Catalog'}</p>
           <dl class="data-sheet">

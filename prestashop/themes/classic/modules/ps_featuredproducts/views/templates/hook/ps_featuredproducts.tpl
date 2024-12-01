@@ -23,11 +23,52 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 <section class="featured-products clearfix">
+  <img class="brands-img" src="{$urls.img_url}brands.png"/>
   <h2 class="h2 products-section-title text-uppercase">
-    {l s='Popular Products' d='Shop.Theme.Catalog'}
+    {l s='Nowości' d='Shop.Theme.Catalog'}
   </h2>
   {include file="catalog/_partials/productlist.tpl" products=$products cssClass="row" productClass="col-xs-12 col-sm-6 col-lg-4 col-xl-3"}
-  <a class="all-product-link float-xs-left float-md-right h4" href="{$allProductsLink}">
-    {l s='All products' d='Shop.Theme.Catalog'}<i class="material-icons">&#xE315;</i>
-  </a>
+  <div class="blogpost">
+    <div class="blogpost_header"><span>Druty lantern moon</span></div>
+    <div class="blogpost_info">
+      <span>
+        Dodano:    
+      </span>
+      <span class="blogpost_black">
+        07-06-2023
+      </span>
+      <span>
+        w kategorii:
+      </span>
+      <span class="blogpost_black">
+        Nowość, Druty, Akcesoria
+      </span>
+      <span>
+        autor:
+      </span>
+      <span class="blogpost_black">
+        admin
+      </span>
+    </div>
+    <div class="blogpost_content">
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <img src="{$urls.img_url}lantern-moon.jpg" />
+            </td>
+            <td>
+              <span>
+                <p>Nareszcie! Druty Lantern Moon znalazły się na naszym rynku. Są to druty wykonane z drewna hebanowego, które łączą sobie piękno naturalnego drewna i wysoką funkcjonalność.</p>
+                <p>Jedną z głównych zalet drutów hebanowych jest ich lekkość. Takie druty są znacznie lżejsze niż tradycyjne metalowe druty, co sprawia, że są one wygodne i łatwe w użyciu. Bez względu na to, czy jesteś początkującym czy doświadczonym dziewiarką, pozwolą Ci na długotrwałą i wygodną pracę bez zmęczenia dłoni..</p>
+                <p>Kolejną ważną zaletą drutów z drewna hebanowego jest ich naturalne ciepło. Są przyjemne w dotyku i nie powoduje dyskomfortu podczas użytkowania. Mają też piękny, ciepły, głęboki czarny kolor, który dodaje elegancji i stylu.</p>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p></p>
+    </div>
+    <a href="https://www.grzyby.pl/">czytaj całość >></a>
+  </div>
 </section>

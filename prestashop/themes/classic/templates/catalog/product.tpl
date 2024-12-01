@@ -49,6 +49,9 @@
 {block name='content'}
 
   <section id="main">
+    {block name='page_header'}
+    <h1 class="custom_product_title">{block name='page_title'}{$product.name}{/block}</h1>
+  {/block}
     <meta content="{$product.url}">
 
     <div class="row product-container js-product-container">
@@ -72,10 +75,31 @@
         </div>
         <div class="col-md-6">
           {block name='page_header_container'}
-            {block name='page_header'}
-              <h1 class="h1">{block name='page_title'}{$product.name}{/block}</h1>
-            {/block}
+
           {/block}
+
+            {block name='product_quantities'}
+            {if $product.show_quantities}
+              <div class="product-quantities" style="font-size:1.2em;">
+                <span class="label">{l s='Dostępność:' d='Shop.Theme.Catalog'}</span>
+                <span style="margin-left:15px;" data-stock="{$product.quantity}" data-allow-oosp="{$product.allow_oosp}">{$product.quantity} {$product.quantity_label}</span>
+              </div>
+            {/if}
+
+            {if $product.quantity > 0}
+                <div class="availability" style="font-size:1.2em;">
+                  <span class="label"> Wysyłka w: <span style="margin-left: 23px;"> 48 godzin </span> </span>
+                </div>
+            {else}
+                <div class="availability" style="font-size:1.2em;">
+                  <span class="label">{l s='Dostępność: niedostępny - napisz lub zadzwoń'}</span>
+                </div>
+            {/if}
+
+            
+
+          {/block}
+
           {block name='product_prices'}
             {include file='catalog/_partials/product-prices.tpl'}
           {/block}
@@ -134,65 +158,9 @@
 
             </div>
 
-            {block name='hook_display_reassurance'}
-              {hook h='displayReassurance'}
-            {/block}
-
             {block name='product_tabs'}
               <div class="tabs">
-                <ul class="nav nav-tabs" role="tablist">
-                  {if $product.description}
-                    <li class="nav-item">
-                       <a
-                         class="nav-link{if $product.description} active js-product-nav-active{/if}"
-                         data-toggle="tab"
-                         href="#description"
-                         role="tab"
-                         aria-controls="description"
-                         {if $product.description} aria-selected="true"{/if}>{l s='Description' d='Shop.Theme.Catalog'}</a>
-                    </li>
-                  {/if}
-                  <li class="nav-item">
-                    <a
-                      class="nav-link{if !$product.description} active js-product-nav-active{/if}"
-                      data-toggle="tab"
-                      href="#product-details"
-                      role="tab"
-                      aria-controls="product-details"
-                      {if !$product.description} aria-selected="true"{/if}>{l s='Product Details' d='Shop.Theme.Catalog'}</a>
-                  </li>
-                  {if $product.attachments}
-                    <li class="nav-item">
-                      <a
-                        class="nav-link"
-                        data-toggle="tab"
-                        href="#attachments"
-                        role="tab"
-                        aria-controls="attachments">{l s='Attachments' d='Shop.Theme.Catalog'}</a>
-                    </li>
-                  {/if}
-                  {foreach from=$product.extraContent item=extra key=extraKey}
-                    <li class="nav-item">
-                      <a
-                        class="nav-link"
-                        data-toggle="tab"
-                        href="#extra-{$extraKey}"
-                        role="tab"
-                        aria-controls="extra-{$extraKey}">{$extra.title}</a>
-                    </li>
-                  {/foreach}
-                </ul>
 
-                <div class="tab-content" id="tab-content">
-                 <div class="tab-pane fade in{if $product.description} active js-product-tab-active{/if}" id="description" role="tabpanel">
-                   {block name='product_description'}
-                     <div class="product-description">{$product.description nofilter}</div>
-                   {/block}
-                 </div>
-
-                 {block name='product_details'}
-                   {include file='catalog/_partials/product-details.tpl'}
-                 {/block}
 
                  {block name='product_attachments'}
                    {if $product.attachments}
@@ -249,10 +217,44 @@
     {/block}
 
     {block name='page_footer_container'}
-      <footer class="page-footer">
+      <footer class="page-footer js-content-wrapper right-column col-xs-12 col-sm-8 col-md-9">
         {block name='page_footer'}
-          <!-- Footer content -->
+
+          <div id="tab-content">
+              {block name='product_description'}
+                {if $product.description}
+                  <div class="custom_description_title">
+                    <h2>{l s='Description' d='Shop.Theme.Catalog'}</h2>
+                  </div>
+                  <div style="margin-bottom:20px;"> </div>
+                    <div style="margin-left: 10px;"> 
+                      {$product.description nofilter} 
+                    </div>
+                  
+                {/if}
+              {/block}
+              
+              {if !empty($product.specific_references) || !empty($product.features)}
+                {block name='product_details'}
+                  <div class="product-details">
+
+                  <div class="custom_description_title" style="margin-top:70px; ">
+                    <h2>{l s='Product Details' d='Shop.Theme.Catalog'}</h2>
+                  </div>
+                  <div style="margin-bottom:20px;"> </div>
+                    {include file='catalog/_partials/product-details.tpl'}
+                  </div>
+                {/block}
+              {else}
+                <div style="margin-bottom:150px;"> </div>
+              {/if}
+
+
+
+              
+            </div>
         {/block}
+
       </footer>
     {/block}
   </section>

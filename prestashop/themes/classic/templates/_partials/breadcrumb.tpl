@@ -28,10 +28,14 @@
       {foreach from=$breadcrumb.links item=path name=breadcrumb}
         {block name='breadcrumb_item'}
           <li>
-            {if not $smarty.foreach.breadcrumb.last}
-              <a href="{$path.url}"><span>{$path.title}</span></a>
+            {if $smarty.foreach.breadcrumb.first}
+              <a href="{$path.url}"><span>Jesteś w:</span></a>
             {else}
-              <span>{$path.title}</span>
+              {if not $smarty.foreach.breadcrumb.last}
+                <a href="{$path.url}"><span>{$path.title}</span></a>
+              {else}
+                <span>{$path.title}</span>
+              {/if}
             {/if}
           </li>
         {/block}

@@ -28,7 +28,27 @@
     {if $nodes|count}
       <ul class="category-sub-menu">
         {foreach from=$nodes item=node}
-          <li data-depth="{$depth}">
+          {* <p>Category ID: {$category->id}</p>
+          <p>Node ID: {$node->id}</p>
+          <p>Category Parent ID: {$category->id_parent}</p> *}
+          {if isset($category)}
+            {if is_object($category)}
+                {if $category->id == $node.id || $category->id_parent == $node.id}
+                    <li data-depth="{$depth}" class="active">
+                {else}
+                    <li data-depth="{$depth}">
+                {/if}
+            {else}
+                {if $category.id == $node.id || $category.id_parent == $node.id}
+                    <li data-depth="{$depth}" class="active">
+                {else}
+                    <li data-depth="{$depth}">
+                {/if}
+            {/if}
+          {else}
+            <li data-depth="{$depth}">
+        {/if}
+          
             {if $depth===0}
               <a href="{$node.link}">{$node.name}</a>
               {if $node.children}
@@ -61,7 +81,8 @@
 
 <div class="block-categories">
   <ul class="category-top-menu">
-    <li><a class="text-uppercase h6" href="{$categories.link nofilter}">{$categories.name}</a></li>
+    <li><a class="text-uppercase h6">{$categories.name}</a></li>
     <li>{categories nodes=$categories.children}</li>
   </ul>
+  
 </div>

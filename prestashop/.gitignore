@@ -2,7 +2,6 @@
 
 /.htaccess
 *.log
-.env
 img/tmp
 
 app/config/parameters.php

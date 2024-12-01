@@ -38,6 +38,11 @@ def download_all_images():
             image_url = f"data/images/{product_name}_{counter_img}.jpg"
             counter_img += 1
             
+            if url == base_img_url:
+                if os.path.exists(image_url):
+                    os.remove(image_url)
+                continue
+            
             if os.path.exists(image_url):
                 print(f"Image already exists: {image_url}")
             else:
