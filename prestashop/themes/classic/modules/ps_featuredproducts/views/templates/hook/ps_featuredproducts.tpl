@@ -69,6 +69,6 @@
       </table>
       <p></p>
     </div>
-    <a href="https://www.grzyby.pl/">czytaj całość >></a>
+    <a href="#index">czytaj całość >></a>
   </div>
 </section>
