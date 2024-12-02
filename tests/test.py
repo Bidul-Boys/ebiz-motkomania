@@ -398,7 +398,6 @@ def main():
             test.select_payment_method()
             test.confirm_order()
             test.check_order_status()
-            wait_for_payment_status() 
             test.download_vat_invoice()
 
             end_time = time.time()
