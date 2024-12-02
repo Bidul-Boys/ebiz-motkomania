@@ -223,7 +223,7 @@ class PrestaShopTest:
             time.sleep(Config.INTERACTION_SLEEP_TIME)
 
             # Set quantity based on whether it's in the last items category
-            quantity = 1 if items_quantity <= 3 else random.randint(1, 3)
+            quantity = 1 if items_quantity <= 3 else random.randint(1, 2)
             quantity_input.send_keys(str(quantity))
             time.sleep(Config.INTERACTION_SLEEP_TIME)
 
