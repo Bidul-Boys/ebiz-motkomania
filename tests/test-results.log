@@ -1,15 +1,15 @@
-2024-12-02 14:11:11,042 - __main__ - INFO - Initialized WebDriver with configured window size
-2024-12-02 14:11:11,832 - __main__ - INFO - Opening registration page
-2024-12-02 14:11:18,983 - __main__ - INFO - Account registration successful
-2024-12-02 14:11:19,449 - __main__ - INFO - Searching for a product
-2024-12-02 14:11:21,677 - __main__ - INFO - Product added to cart successfully
-2024-12-02 14:11:58,768 - __main__ - INFO - Successfully added 10 products to cart
-2024-12-02 14:11:59,476 - __main__ - INFO - Navigated to cart page
-2024-12-02 14:11:59,966 - __main__ - INFO - Removed 3 items from cart
-2024-12-02 14:12:02,927 - __main__ - INFO - Order details filled successfully
-2024-12-02 14:12:03,781 - __main__ - INFO - Delivery option selected
-2024-12-02 14:12:03,941 - __main__ - INFO - Payment method selected
-2024-12-02 14:12:10,758 - __main__ - INFO - Order confirmed successfully
-2024-12-02 14:12:12,431 - __main__ - INFO - Order details accessed successfully
-2024-12-02 14:12:14,438 - __main__ - INFO - VAT invoice download initiated
-2024-12-02 14:12:14,438 - __main__ - INFO - Total Execution Time: 64.22 seconds
+2025-01-08 22:09:13,167 - __main__ - INFO - Initialized WebDriver with configured window size
+2025-01-08 22:09:14,247 - __main__ - INFO - Opening registration page
+2025-01-08 22:09:18,408 - __main__ - INFO - Account registration successful
+2025-01-08 22:09:18,806 - __main__ - INFO - Searching for a product
+2025-01-08 22:09:20,205 - __main__ - INFO - Product added to cart successfully
+2025-01-08 22:09:48,689 - __main__ - INFO - Successfully added 10 products to cart
+2025-01-08 22:09:49,265 - __main__ - INFO - Navigated to cart page
+2025-01-08 22:09:49,647 - __main__ - INFO - Removed 3 items from cart
+2025-01-08 22:09:52,389 - __main__ - INFO - Order details filled successfully
+2025-01-08 22:09:53,301 - __main__ - INFO - Delivery option selected
+2025-01-08 22:09:53,419 - __main__ - INFO - Payment method selected
+2025-01-08 22:09:57,922 - __main__ - INFO - Order confirmed successfully
+2025-01-08 22:09:59,257 - __main__ - INFO - Order details accessed successfully
+2025-01-08 22:10:00,960 - __main__ - INFO - VAT invoice download initiated
+2025-01-08 22:10:00,960 - __main__ - INFO - Total Execution Time: 48.84 seconds
