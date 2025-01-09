@@ -19,7 +19,6 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-enable memcached
 
 RUN chmod +x -R /tmp/db_dumps && chmod -x -R /tmp/docker_init
-RUN chmod 777 -R /var/www/html
 
 COPY prestashop/.htaccess /var/www/html/.htaccess
 COPY prestashop/config/themes /var/www/html/config/themes
@@ -27,3 +26,5 @@ COPY prestashop/img /var/www/html/img
 COPY prestashop/modules /var/www/html/modules
 COPY prestashop/themes/classic /var/www/html/themes/classic
 COPY prestashop/themes/child_classic /var/www/html/themes/child_classic
+
+RUN chmod 777 -R /var/www/html
