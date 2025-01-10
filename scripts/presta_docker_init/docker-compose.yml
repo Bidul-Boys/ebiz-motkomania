@@ -42,7 +42,22 @@ services:
         reservations:
           cpus: '1.0'
           memory: 256M
-        
+
+  memcached:
+    image: memcached
+    command:
+      - --conn-limit=1024
+      - --memory-limit=64
+      - --threads=4
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 128M
+    networks:
+      - prestashop_network
+
+
 networks:
   prestashop_network:
 volumes:
