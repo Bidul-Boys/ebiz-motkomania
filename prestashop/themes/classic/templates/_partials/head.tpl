@@ -82,14 +82,6 @@
 
 {block name='javascript_head'}
   {include file="_partials/javascript.tpl" javascript=$javascript.head vars=$js_custom_vars}
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-11PHQPE8TV"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-11PHQPE8TV');
-  </script>
 {/block}
 
 {block name='hook_header'}
