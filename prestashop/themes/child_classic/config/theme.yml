@@ -4,3 +4,14 @@ display_name: Child theme of classic's theme
 version: 1.0.0
 assets:
   use_parent_assets: false
+
+  js:
+      all:
+        - id: analytics
+          path: assets/js/ga_analitycs.js
+          priority: 10
+          position: bottom
+        - id: ga-function
+          path: https://www.googletagmanager.com/gtag/js?id=G-11PHQPE8TV
+          priority: 5
+          position: bottom
