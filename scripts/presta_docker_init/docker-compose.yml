@@ -12,7 +12,7 @@ services:
       - test-db:/var/lib/mysql
   prestashop:
     container_name: ebiz-prestashop
-    image: test:latest
+    image: prestashop/prestashop:1.7.8
     restart: unless-stopped
     depends_on:
       - mysql
@@ -25,12 +25,15 @@ services:
       DB_USER: ${DB_USER}
       DB_PASSWD: ${DB_PASSWD}
       PS_INSTALL_AUTO: 1
-      PS_DOMAIN: localhost:8443 # HAS TO BE ':8080'
+      PS_DOMAIN: localhost:8080 # HAS TO BE ':8080'
       PS_FOLDER_ADMIN: ${PS_FOLDER_ADMIN}
       PS_COUNTRY: PL
       PS_LANGUAGE: pl
     networks:
       - prestashop_network
+    volumes:
+      - ./../../prestashop:/var/www/html
+      - ./../../config/sites-available:/etc/apache2/sites-available
     deploy:
       resources:
         limits:
