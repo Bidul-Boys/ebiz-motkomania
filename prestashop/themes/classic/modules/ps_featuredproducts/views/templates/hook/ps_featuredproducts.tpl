@@ -24,6 +24,19 @@
  *}
 <section class="featured-products clearfix">
   <a href="/pl/178-wloczki-wg-rodzaju-wlokna" id="GA_banner"> <img class="brands-img" src="{$urls.img_url}brands.png"/> </a>
+  <script>
+    const banner = document.querySelector("#GA_banner");
+
+
+    if(banner) {
+      banner.addEventListener('click', function() {
+            gtag('event', 'banner_click', {
+                'event_category': 'banner',
+                'event_label': 'banner'    
+          });
+      });
+    }
+  </script>
   <h2 class="h2 products-section-title text-uppercase">
     {l s='Nowości' d='Shop.Theme.Catalog'}
   </h2>
