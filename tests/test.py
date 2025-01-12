@@ -15,7 +15,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, ElementClickInterceptedException
 
 class Config:
-    PRESTASHOP_URL = os.environ.get('PRESTASHOP_URL', "https://localhost:19315")
+    PRESTASHOP_URL = os.environ.get('PRESTASHOP_URL', "https://localhost:19315/")
     PAGE_LOAD_TIMEOUT = 10
     LOG_FILE = 'test-results.log'
     LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -422,7 +422,7 @@ class PrestaShopTest:
             time.sleep(Config.INTERACTION_SLEEP_TIME)
 
             self.logger.info("VAT invoice download initiated")
-
+            time.sleep(3)
         except Exception as e:
             self.logger.error(f"Error downloading VAT invoice: {e}")
 
